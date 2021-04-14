@@ -1,4 +1,4 @@
-package com.example.teachu.activities;
+package activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
