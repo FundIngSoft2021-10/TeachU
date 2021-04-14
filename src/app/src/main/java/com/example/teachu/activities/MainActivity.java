@@ -1,8 +1,10 @@
-package com.example.teachu;
+package com.example.teachu.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.teachu.R;
 
 public class MainActivity extends AppCompatActivity {
 
