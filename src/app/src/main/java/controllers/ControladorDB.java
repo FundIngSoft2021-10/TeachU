@@ -1,4 +1,6 @@
 package controllers;
+import android.os.health.SystemHealthManager;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,14 +23,29 @@ public class ControladorDB extends Thread{
 
     public void run(){
         try{
-            //con = DriverManager.getConnection( (url+"?user="+usuario+"&password="+contra + "?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT") );
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            System.out.println("thread");
+            //Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url);
+
+            if(con.isValid(2)){
+                System.out.println("funciona");
+            }
+            else{System.out.println("No funciona");}
         }
-        catch (SQLException e){
+        catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
             throw new Error("Error", e);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
         }
     }
 
+   /* public Connection conexion(){
+        Connection con = DriverManager
+
+    }*/
 
 }
