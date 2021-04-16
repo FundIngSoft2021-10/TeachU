@@ -18,7 +18,7 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['correo
 	
 	if($db->existeUsuario($correo)){
 		$response["error"] = TRUE;
-        $response["error_msg"] = "Usuario ya existe con correo  " . $email;
+        $response["error_msg"] = "Usuario ya existe con correo  " . $correo;
 		echo json_encode($response);
 	}
 	else{
