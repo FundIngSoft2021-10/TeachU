@@ -26,6 +26,10 @@ public class Registro extends AppCompatActivity {
                     Intent int_registroEst = new Intent(Registro.this,Registro_Estudiante.class);
                     startActivity(int_registroEst);
                 }
+                if(rt.isChecked()){
+                    Intent int_registroTut = new Intent(Registro.this,Registro_Tutor.class);
+                    startActivity(int_registroTut);
+                }
             }
         });
     }
