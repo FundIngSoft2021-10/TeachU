@@ -13,7 +13,7 @@ public class ControladorDB extends Thread{
     private String contra;
     private Connection con;
 
-    public ControladorDB() throws SQLException, ClassNotFoundException {
+    public ControladorDB() {
         this.con = null;
         this.usuario = "godzilla";
         this.contra = "teachu1234";
@@ -22,25 +22,7 @@ public class ControladorDB extends Thread{
     }
 
     public void run(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            System.out.println("thread");
-            //Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url);
 
-            if(con.isValid(2)){
-                System.out.println("funciona");
-            }
-            else{System.out.println("No funciona");}
-        }
-        catch (SQLException | ClassNotFoundException e){
-            e.printStackTrace();
-            throw new Error("Error", e);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
     }
 
    /* public Connection conexion(){

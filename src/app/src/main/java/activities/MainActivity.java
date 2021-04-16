@@ -16,14 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try{
-            ControladorDB db = new ControladorDB();
-            Thread t1 = new Thread(db);
-            t1.start();
-        }
-        catch (SQLException | ClassNotFoundException e){
-            throw new Error("Error", e);
-        }
+        ControladorDB db = new ControladorDB();
+
+
     }
 
 
