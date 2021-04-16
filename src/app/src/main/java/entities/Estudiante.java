@@ -1,4 +1,5 @@
 package entities;
 
-public class Estudiante{
+public class Estudiante extends Usuario{
+    private String idEstudiantil;
 }
