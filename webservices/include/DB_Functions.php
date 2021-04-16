@@ -4,9 +4,9 @@ class DB_Functions{
 	private $con;
 	
 	function __construct(){
-		require_once 'DB_Connect.php'
+		require_once 'DB_Connect.php';
 		$db = new DB_Connect();
-		this->con = $db->conectar();
+		$this->con = $db->conectar();
 	}
 	function __destruct() {
          

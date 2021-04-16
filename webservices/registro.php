@@ -6,13 +6,13 @@ $db = new DB_Functions();
 // json response array
 $response = array("error" => FALSE);
  
-if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['correo'])) && isset($_POST['contrasena'])&& isset($_POST['nUsuario'])&& isset($_POST['id_usuario']){
+if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['correo']) && isset($_POST['contrasena'])&& isset($_POST['nUsuario'])&& isset($_POST['id_usuario'])){
  
     // receiving the post params
     $nombre = $_POST['nombre'];
 	$apellido = $_POST['apellido'];
     $correo = $_POST['correo'];
-    $password = $_POST['contrasena'];
+    $contrasena = $_POST['contrasena'];
 	$nusuario = $_POST['nusuario'];
 	$id_usuario = $_POST['id_usuario'];
 	
