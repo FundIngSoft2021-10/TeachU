@@ -37,12 +37,12 @@
         android:id="@+id/btn_registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
@@ -84,18 +84,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="222dp"
+        android:layout_height="100dp"
         android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:hint="Carrera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4">
+
+        <RadioButton
+            android:id="@+id/radio_Estudiante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estudiante" />
+
+        <RadioButton
+            android:id="@+id/radio_Tutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tutor" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
