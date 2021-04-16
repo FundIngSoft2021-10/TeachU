@@ -22,8 +22,27 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['correo
 		echo json_encode($response);
 	}
 	else{
-		
+		$usuario = $db->insertarUsuario($nombre, $apellido,$contrasena,$correo,$nusuario, $id_usuario);
+		if($usuario){
+			$response["error"] = FALSE;
+			$response["Usuario"]["Nombre"] = $usuario["Nombre"];
+			$response["Usuario"]["Apellido"] = $usuario["Apellido"];
+			$response["Usuario"]["CorreoInst"] = $usuario["CorreoInst"];
+			$response["Usuario"]["Nusuario"] = $usuario["Nusuario"];
+			echo json_encode($response);
+		}
+		else{
+			$response["error"] = TRUE;
+			$response["ms_error"] = "Error";
+			echo json_encode($response);
+		}
 	}
+} 
+else {
+    $response["error"] = TRUE;
+    $response["ms_error"] = "Parametro faltante";
+    echo json_encode($response);
+}
 	
 	
 
