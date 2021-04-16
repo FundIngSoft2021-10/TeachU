@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeachU">
         <activity android:name="activities.Login"></activity>
-        <activity android:name="activities.Registro_Estudiante" />
+        <activity android:name="activities.Registro" />
         <activity android:name="activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

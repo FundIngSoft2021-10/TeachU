@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         btnretemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent int_registroEST = new Intent(MainActivity.this,Registro_Estudiante.class);
-                startActivity(int_registroEST);
+                Intent int_registro = new Intent(MainActivity.this, Registro.class);
+                startActivity(int_registro);
             }
         });
     }
