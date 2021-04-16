@@ -1,33 +1,31 @@
 package controllers;
 import android.os.health.SystemHealthManager;
+import android.text.TextUtils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
 public class ControladorDB extends Thread{
-    private String url;
-    private String usuario;
-    private String contra;
-    private Connection con;
+    public static final String TAG = ControladorDB.class.getSimpleName();
+    private RequestQueue rqq;
+
 
     public ControladorDB() {
-        this.con = null;
-        this.usuario = "godzilla";
-        this.contra = "teachu1234";
-        this.url = "jdbc:mysql://teachu.cgcnxzpwojtb.us-east-2.rds.amazonaws.com:3306/teachU?user="+usuario+"&password="+contra;
 
     }
 
-    public void run(){
+    public RequestQueue getRqq() {
+        if (rqq == null) {
+            return null;
+        }
 
+        return rqq;
     }
 
-   /* public Connection conexion(){
-        Connection con = DriverManager
-
-    }*/
+    public <T> void agregarARqq(Request<T> req, String tag) {
+        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRqq().add(req);
+    }
 
 }
