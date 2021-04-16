@@ -9,19 +9,27 @@ import android.widget.Button;
 
 import com.example.teachu.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnretemp = findViewById(R.id.btn_re);
-        btnretemp.setOnClickListener(new View.OnClickListener() {
+
+        TimerTask tarea = new TimerTask(){
             @Override
-            public void onClick(View v) {
-                Intent int_registro = new Intent(MainActivity.this, Registro.class);
-                startActivity(int_registro);
+            public void run() {
+                Intent login = new Intent(MainActivity.this, Login.class );
+                startActivity(login);
+                finish();
             }
-        });
+        };
+
+        Timer tiempoo = new Timer();
+        tiempoo.schedule(tarea, 2000);
+
     }
 }
