@@ -27,7 +27,7 @@ if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo
 			$response["Usuario"]["Nombre"] = $usuario["Nombre"];
 			$response["Usuario"]["Apellido"] = $usuario["Apellido"];
 			$response["Usuario"]["CorreoInst"] = $usuario["CorreoInst"];
-			$response["Usuario"]["Nusuario"] = $usuario["Nusuario"];
+			$response["Usuario"]["nUsuario"] = $usuario["nUsuario"];
 			echo json_encode($response);
 		}
 		else{
