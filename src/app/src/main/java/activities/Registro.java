@@ -47,7 +47,7 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(re.isChecked()){
-                    ejecutarservicio("http://192.168.100.137:80/serviciosBD/insertar_Usuario.php");
+                    ejecutarservicio("http://192.168.0.5:80/webservices/registro.php");
                     //Intent int_registroEst = new Intent(Registro.this,Registro_Estudiante.class);
                     //startActivity(int_registroEst);
                 }
@@ -75,13 +75,13 @@ public class Registro extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "2";
-                parametros.put("Id_usuario",cod);
-                parametros.put("Nombre","juan");
-                parametros.put("Apellido","rincon");
-                parametros.put("CorreoInst","correo@correo");
-                parametros.put("Nusuario","eljajas");
-                parametros.put("contraseña","123325");
+                String cod = "20";
+                parametros.put("id_usuario",cod);
+                parametros.put("nombre","petronio");
+                parametros.put("apellido","gaticus");
+                parametros.put("correo","corrius@corrias");
+                parametros.put("nUsuario","manguitoBonito");
+                parametros.put("contrasena","123");
                 return parametros;
             }
         };
