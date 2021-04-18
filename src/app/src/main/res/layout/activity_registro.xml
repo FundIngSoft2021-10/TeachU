@@ -11,10 +11,10 @@
         android:layout_height="760dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.068">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
     </ScrollView>
 
     <EditText
-        android:id="@+id/ET_Nombre"
+        android:id="@+id/ET_Nombre_Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.238" />
 
     <EditText
-        android:id="@+id/ET_correoIns"
+        android:id="@+id/ET_correoIns_Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_Apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_Apellido_Registro" />
 
     <TextView
         android:id="@+id/titulo"
@@ -76,7 +76,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ET_Apellido"
+        android:id="@+id/ET_Apellido_Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_Nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_Nombre_Registro" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ED_contrasena">
+        app:layout_constraintTop_toBottomOf="@+id/ED_contrasena__Registro">
 
         <RadioButton
             android:id="@+id/radio_Estudiante"
@@ -113,7 +113,7 @@
     </RadioGroup>
 
     <EditText
-        android:id="@+id/ET_NombreU"
+        android:id="@+id/ET_NombreU_Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -124,10 +124,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_correoIns" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_correoIns_Registro" />
 
     <EditText
-        android:id="@+id/ED_contrasena"
+        android:id="@+id/ED_contrasena__Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -138,6 +138,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_NombreU" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_NombreU_Registro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

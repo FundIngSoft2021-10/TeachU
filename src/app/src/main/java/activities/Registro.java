@@ -31,12 +31,12 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         RadioButton re,rt;
-        EditText ed_nombre,ed_apellido,ed_correo,ed_nusuario,ed_contrasena;
-        ed_nombre = findViewById(R.id.ET_Nombre);
-        ed_apellido = findViewById(R.id.ET_Apellido);
-        ed_correo = findViewById(R.id.ET_correoIns);
-        ed_nusuario = findViewById(R.id.ET_NombreU);
-        ed_contrasena = findViewById(R.id.ED_contrasena);
+        //EditText ed_nombre,ed_apellido,ed_correo,ed_nusuario,ed_contrasena;
+        ed_nombre = findViewById(R.id.ET_Nombre_Registro);
+        ed_apellido = findViewById(R.id.ET_Apellido_Registro);
+        ed_correo = findViewById(R.id.ET_correoIns_Registro);
+        ed_nusuario = findViewById(R.id.ET_NombreU_Registro);
+        ed_contrasena = findViewById(R.id.ED_contrasena__Registro);
         btn_registro = findViewById(R.id.btn_registro);
         re = findViewById(R.id.radio_Estudiante);
         rt = findViewById(R.id.radio_Tutor);
@@ -47,7 +47,7 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(re.isChecked()){
-                    ejecutarservicio("http://192.168.0.5:80/webservices/registro.php");
+                    ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
                     //Intent int_registroEst = new Intent(Registro.this,Registro_Estudiante.class);
                     //startActivity(int_registroEst);
                 }
@@ -60,6 +60,7 @@ public class Registro extends AppCompatActivity {
     }
 
     private void ejecutarservicio(String URL){
+        //setContentView(R.layout.activity_registro);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -75,13 +76,13 @@ public class Registro extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "20";
+                String cod = "22";
                 parametros.put("id_usuario",cod);
-                parametros.put("nombre","petronio");
-                parametros.put("apellido","gaticus");
-                parametros.put("correo","corrius@corrias");
-                parametros.put("nUsuario","manguitoBonito");
-                parametros.put("contrasena","123");
+                parametros.put("nombre",ed_nombre.getText().toString());
+                parametros.put("apellido",ed_apellido.getText().toString());
+                parametros.put("correo",ed_correo.getText().toString());
+                parametros.put("nUsuario",ed_nusuario.getText().toString());
+                parametros.put("contrasena",ed_contrasena.getText().toString());
                 return parametros;
             }
         };
