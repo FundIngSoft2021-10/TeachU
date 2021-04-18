@@ -7,7 +7,7 @@
     tools:context="activities.Registro_Tutor">
 
     <EditText
-        android:id="@+id/ET_numcedula"
+        android:id="@+id/ET_numcedula_RegistroTutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner2_RegistroTutor" />
 
     <Button
         android:id="@+id/BTN_completar_registro_tutor"
@@ -29,10 +29,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_descripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor" />
 
     <EditText
-        android:id="@+id/ET_descripcion"
+        android:id="@+id/ET_descripcion_RegistroTutor"
         android:layout_width="217dp"
         android:layout_height="130dp"
         android:layout_marginTop="40dp"
@@ -42,10 +42,10 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_numcedula" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_numcedula_RegistroTutor" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner2_RegistroTutor"
         android:layout_width="212dp"
         android:layout_height="36dp"
         android:layout_marginTop="24dp"
