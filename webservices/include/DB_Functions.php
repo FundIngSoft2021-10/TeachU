@@ -25,7 +25,7 @@ class DB_Functions{
 		$query->execute();
 		$query->store_result();
 		
-		if($query->num_rows > 0){
+		if($query->num_rows > 0){ // validacion de numero de filas 
 			
 			$query->close();
 			return true;
@@ -36,6 +36,13 @@ class DB_Functions{
 		}
 		
 	}
+	public function calcularId(){
+		$query = $this->con->prepare("select MAX(Id_Usuario)+1 as nid from Usuario");
+		$query->execute();
+		$n_id = $query->get_result()->fetch_assoc();
+		return $n_id;
+		
+	}
 	
 	public function insertarUsuario($nombre, $apellido,$contrasena,$correo,$nusuario, $id_usuario){
 		$query = $this->con->prepare("INSERT INTO Usuario (Nombre, Apellido, contrasena, CorreoInst, Nusuario, Id_Usuario) VALUES (?, ?, ?, ?, ?, ?)");
@@ -44,7 +51,7 @@ class DB_Functions{
 		$query->close();
 		
 		if($resultado){
-			$stmt = $this->con->prepare("SELECT * FROM Usuario WHERE correo = ?");
+			$stmt = $this->con->prepare("SELECT * FROM Usuario WHERE CorreoInst = ?");
             $stmt->bind_param("s", $correo);
 			$stmt->execute();
 			$usuario = $stmt->get_result()->fetch_assoc();

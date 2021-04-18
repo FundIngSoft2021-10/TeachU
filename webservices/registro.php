@@ -13,7 +13,7 @@ if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
 	$nusuario = $_POST["nUsuario"];
-	$id_usuario = $_POST["id_usuario"];
+	$id_usuario = $db->calcularId();
 	
 	if($db->existeUsuario($correo)){
 		$response["error"] = TRUE;
@@ -21,13 +21,13 @@ if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo
 		echo json_encode($response);
 	}
 	else{
-		$usuario = $db->insertarUsuario($nombre, $apellido,$contrasena,$correo,$nusuario, $id_usuario);
+		$usuario = $db->insertarUsuario($nombre, $apellido,$contrasena,$correo,$nusuario,$id_usuario["nid"]);
 		if($usuario){
 			$response["error"] = FALSE;
 			$response["Usuario"]["Nombre"] = $usuario["Nombre"];
 			$response["Usuario"]["Apellido"] = $usuario["Apellido"];
 			$response["Usuario"]["CorreoInst"] = $usuario["CorreoInst"];
-			$response["Usuario"]["nUsuario"] = $usuario["nUsuario"];
+			$response["Usuario"]["Nusuario"] = $usuario["Nusuario"];
 			echo json_encode($response);
 		}
 		else{
