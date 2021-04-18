@@ -26,6 +26,7 @@ public class Registro extends AppCompatActivity {
     RadioButton re,rt;
     EditText ed_nombre,ed_apellido,ed_correo,ed_nusuario,ed_contrasena;
     Button btn_registro;
+    boolean confirmacion = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +49,11 @@ public class Registro extends AppCompatActivity {
             public void onClick(View v) {
                 if(re.isChecked()){
                     ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
-                    //Intent int_registroEst = new Intent(Registro.this,Registro_Estudiante.class);
-                    //startActivity(int_registroEst);
+                    Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
+                    startActivity(int_registroEst);
                 }
                 if(rt.isChecked()){
+                    ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
                     Intent int_registroTut = new Intent(Registro.this,Registro_Tutor.class);
                     startActivity(int_registroTut);
                 }
@@ -65,7 +67,7 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
-
+                confirmacion = true;
             }
         }, new Response.ErrorListener() {
             @Override
@@ -76,7 +78,7 @@ public class Registro extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "22";
+                String cod = "32";
                 parametros.put("id_usuario",cod);
                 parametros.put("nombre",ed_nombre.getText().toString());
                 parametros.put("apellido",ed_apellido.getText().toString());
