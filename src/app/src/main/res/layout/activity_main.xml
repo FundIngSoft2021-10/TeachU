@@ -4,32 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondo_splash_foreground"
+    android:background="@mipmap/fondo_splash_definitivo_foreground"
     tools:context="activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="160dp"
-        android:layout_height="183dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@mipmap/ic_launcher_foreground"
+        android:layout_width="237dp"
+        android:layout_height="186dp"
+        android:src="@mipmap/logo_splash_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="229dp"
-        android:layout_height="176dp"
-        android:src="@mipmap/teach_name_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintVertical_bias="0.471" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
