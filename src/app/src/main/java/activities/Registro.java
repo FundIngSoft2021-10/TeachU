@@ -48,15 +48,19 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!ed_nombre.getText().toString().isEmpty() && !ed_apellido.getText().toString().isEmpty() && !ed_correo.getText().toString().isEmpty() && !ed_nusuario.getText().toString().isEmpty() && !ed_contrasena.getText().toString().isEmpty()) {
-                    if (re.isChecked()) {
-                        ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
-                        Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
-                        startActivity(int_registroEst);
-                    }
-                    if (rt.isChecked()) {
-                        ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
-                        Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
-                        startActivity(int_registroTut);
+                    if(re.isChecked() || rt.isChecked()) {
+                        if (re.isChecked()) {
+                            ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                            Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
+                            startActivity(int_registroEst);
+                        }
+                        if (rt.isChecked()) {
+                            ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                            Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
+                            startActivity(int_registroTut);
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "SELECCIONE UN TIPO DE USUARIO PARA CONTINUAR", Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "LLENE TODOS LOS CAMPOS PARA CONTINUAR", Toast.LENGTH_SHORT).show();
