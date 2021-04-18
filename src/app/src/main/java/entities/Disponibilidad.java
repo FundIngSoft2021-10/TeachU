@@ -1,26 +1,38 @@
 package entities;
 
-class Disponibilidad{
-    private String dia;
-    private int hora;
-    public Disponibilidad(String dia,int hora){
+import java.util.Calendar;
+
+class Disponibilidad {
+    private int id;
+    private char dia;
+    private Calendar hora;
+    public Disponibilidad(int id,char dia, Calendar hora){
+        this.id = id;
         this.dia = dia;
         this.hora = hora;
     }
 
-    public String getDia() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public char getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(char dia) {
         this.dia = dia;
     }
 
-    public int getHora() {
+    public Calendar getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
+    public void setHora(Calendar hora) {
         this.hora = hora;
     }
 }
