@@ -86,7 +86,7 @@ public class Registro extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "35";
+                String cod = "3";
                 parametros.put("id_usuario",cod);
                 parametros.put("nombre",ed_nombre.getText().toString());
                 parametros.put("apellido",ed_apellido.getText().toString());
