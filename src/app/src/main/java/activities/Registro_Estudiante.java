@@ -1,63 +1,70 @@
 package activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
 import com.example.teachu.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import cz.msebera.android.httpclient.Header;
 
 public class  Registro_Estudiante extends AppCompatActivity {
-    List<String> carreras;
-    Spinner spinnercarrera;
+    Spinner listado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro__estudiante);
-        carreras = new ArrayList<String>();
-        spinnercarrera = findViewById(R.id.spinner);
-        RetornarCarreras("http://192.168.100.137:80/webservices/prueba.php");
-
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,carreras);
-        spinnercarrera.setAdapter(adaptador);
+        listado = (Spinner) findViewById(R.id.spinnercarrera);
+        obtDatos();
     }
-    private void RetornarCarreras(String URL){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+
+
+    public void obtDatos() {
+        AsyncHttpClient cliente = new AsyncHttpClient();
+        String url = "http://192.168.100.137:80/webservices/prueba.php";
+        RequestParams parametros = new RequestParams();
+        parametros.put("clase", 18);
+
+        cliente.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        carreras.add(jsonObject.getString("Ncarrera"));
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                CargaLista(obtDatosJason(new String(responseBody)));
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    public void CargaLista(ArrayList<String> datos) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, datos);
+        listado.setAdapter(adapter);
+    }
+
+    public ArrayList<String> obtDatosJason(String response) {
+        ArrayList<String> listado = new ArrayList();
+        try {
+            JSONArray jsonArray = new JSONArray(response);
+            String texto;
+            for (int i = 1; i < jsonArray.length(); i++) {
+                texto = jsonArray.getJSONObject(i).getString("Ncarrera");
+                listado.add(texto);
             }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
-        );
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonArrayRequest);
+        return listado;
     }
 }
