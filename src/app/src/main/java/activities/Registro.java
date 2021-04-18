@@ -47,15 +47,19 @@ public class Registro extends AppCompatActivity {
         btn_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(re.isChecked()){
-                    ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
-                    Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
-                    startActivity(int_registroEst);
-                }
-                if(rt.isChecked()){
-                    ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
-                    Intent int_registroTut = new Intent(Registro.this,Registro_Tutor.class);
-                    startActivity(int_registroTut);
+                if(!ed_nombre.getText().toString().isEmpty() && !ed_apellido.getText().toString().isEmpty() && !ed_correo.getText().toString().isEmpty() && !ed_nusuario.getText().toString().isEmpty() && !ed_contrasena.getText().toString().isEmpty()) {
+                    if (re.isChecked()) {
+                        ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                        Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
+                        startActivity(int_registroEst);
+                    }
+                    if (rt.isChecked()) {
+                        ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                        Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
+                        startActivity(int_registroTut);
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "LLENE TODOS LOS CAMPOS PARA CONTINUAR", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -78,7 +82,7 @@ public class Registro extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "32";
+                String cod = "34";
                 parametros.put("id_usuario",cod);
                 parametros.put("nombre",ed_nombre.getText().toString());
                 parametros.put("apellido",ed_apellido.getText().toString());
