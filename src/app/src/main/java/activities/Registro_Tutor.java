@@ -24,5 +24,6 @@ public class Registro_Tutor extends AppCompatActivity {
 
         ArrayAdapter<String> adaptador   = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipo_documento);
         spiner_tipodoc.setAdapter(adaptador);
+
     }
 }

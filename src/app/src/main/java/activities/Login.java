@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
     }
     public void obtDatos() {
         final AsyncHttpClient[] cliente = {new AsyncHttpClient()};
-        String url = "http://192.168.0.5:80/webservices/usuarios.php";
+        String url = "http://192.168.0.28:80/webservices/usuarios.php";
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
         cliente[0].post(url, parametros, new AsyncHttpResponseHandler() {
