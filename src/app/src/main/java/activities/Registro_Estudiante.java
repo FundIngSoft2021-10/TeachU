@@ -35,7 +35,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
 
     public void obtDatos() {
         AsyncHttpClient cliente = new AsyncHttpClient();
-        String url = "http://192.168.0.28:80/webservices/prueba.php";
+        String url = "http://192.168.0.5:80/webservices/prueba.php";
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
 
@@ -73,7 +73,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
     }
 
     private void buscarId(String URL){
-        JsonArrayRequest jsonArrayRequest
+        JsonArrayRequest jsonArrayRequest;
     }
 
 }

@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boolean ingresar = false;
-                for(int i = 1; i < usuarios.size() ; i++){
+                for(int i = 0; i < usuarios.size() ; i++){
                     if(usuario.getText().toString().equalsIgnoreCase(usuarios.get(i)) && password.getText().toString().equalsIgnoreCase(contrasenas.get(i))){
                         ingresar = true;
                     }
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
     }
     public void obtDatos() {
         final AsyncHttpClient[] cliente = {new AsyncHttpClient()};
-        String url = "http://192.168.0.28:80/webservices/usuarios.php";
+        String url = "http://192.168.0.5:80/webservices/usuarios.php";
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
         cliente[0].post(url, parametros, new AsyncHttpResponseHandler() {
@@ -84,7 +84,7 @@ public class Login extends AppCompatActivity {
         try {
             JSONArray jsonArray = new JSONArray(response);
             String texto;
-            for (int i = 1; i < jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 texto = jsonArray.getJSONObject(i).getString(parametro);
                 listado.add(texto);
             }
