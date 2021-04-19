@@ -24,31 +24,33 @@
         android:id="@+id/BTN_completar_registro_tutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
         android:text="Completar Registro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor" />
+        app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor"
+        app:layout_constraintVertical_bias="0.135" />
 
     <EditText
         android:id="@+id/ET_descripcion_RegistroTutor"
         android:layout_width="217dp"
         android:layout_height="130dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Descripcion"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ET_numcedula_RegistroTutor" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_clases" />
 
     <Spinner
         android:id="@+id/spinner2_RegistroTutor"
-        android:layout_width="212dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="213dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +60,34 @@
         android:id="@+id/titulo_tipdoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="52dp"
         android:text="Tipo de documento"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_clases"
+        android:layout_width="242dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_clases" />
+
+    <TextView
+        android:id="@+id/titulo_clases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Clases"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ET_numcedula_RegistroTutor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
