@@ -2,6 +2,7 @@ package activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -84,6 +85,8 @@ public class Registro_Tutor extends AppCompatActivity {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 salida.setText(id);
                 ingresarTutor("https://webserviceteachu.000webhostapp.com/index.php/Registro_Tutor.php");
+                Intent int_login = new Intent(Registro_Tutor.this,Login.class);
+                startActivity(int_login);
             }
         });
     }

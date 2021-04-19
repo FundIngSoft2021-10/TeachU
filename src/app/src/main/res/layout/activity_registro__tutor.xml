@@ -22,12 +22,12 @@
 
     <Button
         android:id="@+id/BTN_completar_registro_tutor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="161dp"
+        android:layout_height="51dp"
         android:text="Completar Registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toEndOf="@+id/btn_confirmardatos_registroTutor"
         app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor"
         app:layout_constraintVertical_bias="0.276" />
@@ -94,8 +94,8 @@
         android:id="@+id/btn_confirmardatos_registroTutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
         android:layout_marginBottom="56dp"
         android:text="Confirmar datos"
         app:layout_constraintBottom_toBottomOf="parent"
