@@ -32,6 +32,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
     Spinner listado;
     String id;
     String id_usuario;
+    String id_carrera;
     TextView salida;
     Button btn_terminarRegistro;
     Button btn_seleccionar_carrera;
@@ -53,7 +54,8 @@ public class  Registro_Estudiante extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
-                salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
+                buscarIdCarrera("https://webserviceteachu.000webhostapp.com/index.php/prueba.php");
+                salida.setText("Usuario:"+id+" "+"carrera:"+id_carrera);
                 listado.setEnabled(false);
                 btn_terminarRegistro.setEnabled(true);
             }
@@ -63,7 +65,8 @@ public class  Registro_Estudiante extends AppCompatActivity {
             public void onClick(View v) {
 
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
-                salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
+                buscarIdCarrera("https://webserviceteachu.000webhostapp.com/index.php/prueba.php");
+                salida.setText("Usuario:"+id+" "+"carrera:"+id_carrera);
             }
         });
     }
@@ -123,6 +126,35 @@ public class  Registro_Estudiante extends AppCompatActivity {
                         String aux = jsonObject.getString("Nusuario");
                         if(aux.equals(id_usuario)){
                             id = jsonObject.getString("Id_Usuario");
+                        }
+
+
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+    private void buscarIdCarrera(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        String aux = jsonObject.getString("Ncarrera");
+                        if(aux.equals(listado.getSelectedItem().toString())){
+                            id_carrera = jsonObject.getString("IdCarrera");
                         }
 
 
