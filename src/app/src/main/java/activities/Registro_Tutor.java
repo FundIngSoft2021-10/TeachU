@@ -3,10 +3,22 @@ package activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.teachu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -14,15 +26,21 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
 public class Registro_Tutor extends AppCompatActivity {
     Spinner spiner_tipodoc,spiner_clases;
     EditText N_documento, descripcion;
+    TextView salida;
     String Nusuario;
+    String id;
+    Button btn_confirmarDatos,btn_confirmarRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +50,42 @@ public class Registro_Tutor extends AppCompatActivity {
         spiner_clases = findViewById(R.id.spinner_clases);
         N_documento = findViewById(R.id.ET_numcedula_RegistroTutor);
         descripcion = findViewById(R.id.ET_descripcion_RegistroTutor);
+        btn_confirmarDatos = findViewById(R.id.btn_confirmardatos_registroTutor);
+        btn_confirmarRegistro = findViewById(R.id.BTN_completar_registro_tutor);
+        salida = findViewById(R.id.salida_tuto);
+        btn_confirmarRegistro.setEnabled(false);
         Nusuario = getIntent().getExtras().getString("NombreU");
+
+
         String [] tipo_documento = {"CC","TI","CE"};
 
         ArrayAdapter<String> adaptador   = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipo_documento);
         spiner_tipodoc.setAdapter(adaptador);
 
+        btn_confirmarDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!N_documento.getText().toString().isEmpty() && !descripcion.getText().toString().isEmpty()) {
+                    buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
+                    salida.setText(id);
+                    btn_confirmarRegistro.setEnabled(true);
+                    spiner_tipodoc.setEnabled(false);
+                    spiner_clases.setEnabled(false);
+                    N_documento.setEnabled(false);
+                    descripcion.setEnabled(false);
+                }else{
+                    Toast.makeText(getApplicationContext(), "LLENE TODOS LOS CAMPOS PARA CONTINUAR", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn_confirmarRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
+                salida.setText(id);
+                ingresarTutor("https://webserviceteachu.000webhostapp.com/index.php/Registro_Tutor.php");
+            }
+        });
     }
     public void obtDatos() {
         AsyncHttpClient cliente = new AsyncHttpClient();
@@ -79,5 +127,61 @@ public class Registro_Tutor extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         return listado;
+    }
+    private void buscarId(String URL){
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        String aux = jsonObject.getString("Nusuario");
+                        if(aux.equals(Nusuario)){
+                            id = jsonObject.getString("Id_Usuario");
+                        }
+
+
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+    private void ingresarTutor(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("id_usuario",id);
+                parametros.put("cedula",N_documento.getText().toString());
+                parametros.put("tipodoc",spiner_tipodoc.getSelectedItem().toString());
+                parametros.put("descripcion",descripcion.getText().toString());
+                parametros.put("ranking","0");
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
