@@ -22,7 +22,7 @@ CREATE TABLE Usuario
      CorreoInst VARCHAR (100) NOT NULL , 
      Nusuario VARCHAR (50) NOT NULL , 
      Contrasena VARCHAR (50) NOT NULL,
-     CONSTRAINT PK_Usuario PRIMARY KEY (Id_Usuario)
+     CONSTRAINT PK_Usuario PRIMARY KEY (Id_Usuario, Nusuario)
     );
 
 
