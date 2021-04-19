@@ -36,6 +36,14 @@ class DB_Functions{
 		}
 		
 	}
+public function existeUsuarioNusuario($Nusuario){
+		$query = $this->con->prepare("SELECT * FROM Usuario WHERE Nusuario = ?");
+		$query->bind_param("s", $Nusuario);
+		$query->execute();
+		$usuario = $query->get_result()->fetch_assoc();
+		$query->close();
+		echo json_encode($usuario["Id_Usuario"]); 
+	}
 	public function calcularId(){
 		$query = $this->con->prepare("select MAX(Id_Usuario)+1 as nid from Usuario");
 		$query->execute();

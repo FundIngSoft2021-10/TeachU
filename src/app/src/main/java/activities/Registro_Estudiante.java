@@ -7,6 +7,8 @@ import android.widget.Spinner;
 import org.json.JSONArray;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.teachu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -26,6 +28,8 @@ public class  Registro_Estudiante extends AppCompatActivity {
         setContentView(R.layout.activity_registro__estudiante);
         listado = (Spinner) findViewById(R.id.spinnercarrera);
         obtDatos();
+
+
     }
 
 
@@ -67,4 +71,9 @@ public class  Registro_Estudiante extends AppCompatActivity {
         }
         return listado;
     }
+
+    private void buscarId(String URL){
+        JsonArrayRequest jsonArrayRequest
+    }
+
 }
