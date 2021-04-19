@@ -1,8 +1,11 @@
 package activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -28,16 +31,41 @@ import cz.msebera.android.httpclient.Header;
 public class  Registro_Estudiante extends AppCompatActivity {
     Spinner listado;
     String id;
+    String id_usuario;
+    TextView salida;
+    Button btn_terminarRegistro;
+    Button btn_seleccionar_carrera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro__estudiante);
+        id_usuario = getIntent().getExtras().getString("NombreU");
+        buscarId("http://192.168.100.137/webservices/usuarios.php");
         listado = (Spinner) findViewById(R.id.spinnercarrera);
         obtDatos();
-        String id_usuario = getIntent().getExtras().getString("NombreU");
+        id_usuario = getIntent().getExtras().getString("NombreU");
+        salida = findViewById(R.id.salida);
+        btn_terminarRegistro = findViewById(R.id.BTN_c_registro);
+        btn_seleccionar_carrera = findViewById(R.id.BTN_seleccionar_carrera);
+        btn_terminarRegistro.setEnabled(false);
 
+        btn_seleccionar_carrera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buscarId("http://192.168.100.137/webservices/usuarios.php");
+                salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
+                listado.setEnabled(false);
+                btn_terminarRegistro.setEnabled(true);
+            }
+        });
+        btn_terminarRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
+                buscarId("http://192.168.100.137/webservices/usuarios.php");
+                salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
+            }
+        });
     }
 
 
@@ -92,7 +120,11 @@ public class  Registro_Estudiante extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        id = jsonObject.getString("Id_Usuario");
+                        String aux = jsonObject.getString("Nusuario");
+                        if(aux.equals(id_usuario)){
+                            id = jsonObject.getString("Id_Usuario");
+                        }
+
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

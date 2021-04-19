@@ -13,15 +13,18 @@
         android:text="Compretar Registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnercarrera" />
+        app:layout_constraintTop_toBottomOf="@+id/BTN_seleccionar_carrera"
+        app:layout_constraintVertical_bias="0.222" />
 
     <Spinner
         android:id="@+id/spinnercarrera"
         android:layout_width="376dp"
         android:layout_height="34dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -41,11 +44,33 @@
         android:id="@+id/imageView2"
         android:layout_width="214dp"
         android:layout_height="230dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="92dp"
         android:src="@mipmap/godzilla_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/salida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/BTN_seleccionar_carrera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Seleccionar carrera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnercarrera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
