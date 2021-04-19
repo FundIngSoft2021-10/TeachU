@@ -43,11 +43,9 @@ public class  Registro_Estudiante extends AppCompatActivity {
 
     public void obtDatos() {
         AsyncHttpClient cliente = new AsyncHttpClient();
-<<<<<<< HEAD
+
         String url = "http://192.168.100.137:80/webservices/prueba.php";
-=======
-        String url = "http://192.168.0.5:80/webservices/prueba.php";
->>>>>>> 2a10fa532e5a44d35a99d5d996c53f8559095178
+
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
 
@@ -85,7 +83,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
     }
 
     private void buscarId(String URL){
-<<<<<<< HEAD
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -108,9 +106,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
-=======
-        JsonArrayRequest jsonArrayRequest;
->>>>>>> 2a10fa532e5a44d35a99d5d996c53f8559095178
+
     }
 
 }
