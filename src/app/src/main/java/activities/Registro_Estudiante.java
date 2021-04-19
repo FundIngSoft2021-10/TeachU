@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -74,6 +75,8 @@ public class  Registro_Estudiante extends AppCompatActivity {
                 buscarIdCarrera("https://webserviceteachu.000webhostapp.com/index.php/prueba.php");
                 salida.setText("Usuario:"+id+" "+"carrera:"+id_carrera);
                 insertarEstudiante("https://webserviceteachu.000webhostapp.com/index.php/Registro_estudiantes.php");
+                Intent int_login = new Intent(Registro_Estudiante.this,Login.class) ;
+                startActivity(int_login);
             }
         });
     }
