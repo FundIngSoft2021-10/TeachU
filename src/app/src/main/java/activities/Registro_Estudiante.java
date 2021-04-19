@@ -11,11 +11,16 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.teachu.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -36,6 +41,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
     TextView salida;
     Button btn_terminarRegistro;
     Button btn_seleccionar_carrera;
+    RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +73,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 buscarIdCarrera("https://webserviceteachu.000webhostapp.com/index.php/prueba.php");
                 salida.setText("Usuario:"+id+" "+"carrera:"+id_carrera);
+                insertarEstudiante("https://webserviceteachu.000webhostapp.com/index.php/Registro_estudiantes.php");
             }
         });
     }
@@ -169,9 +176,33 @@ public class  Registro_Estudiante extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
             }
         });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
 
     }
-
+    private void insertarEstudiante(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("id_usuario",id);
+                parametros.put("id_Carrera",id_carrera);
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 }
+
+

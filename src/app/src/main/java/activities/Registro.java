@@ -26,7 +26,6 @@ public class Registro extends AppCompatActivity {
     RadioButton re,rt;
     EditText ed_nombre,ed_apellido,ed_correo,ed_nusuario,ed_contrasena;
     Button btn_registro;
-    boolean confirmacion = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +77,6 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
-                confirmacion = true;
             }
         }, new Response.ErrorListener() {
             @Override
