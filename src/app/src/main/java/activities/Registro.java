@@ -22,8 +22,6 @@ import com.example.teachu.R;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.net.InetAddress;
-
 public class Registro extends AppCompatActivity {
     RadioButton re,rt;
     EditText ed_nombre,ed_apellido,ed_correo,ed_nusuario,ed_contrasena;
@@ -44,20 +42,21 @@ public class Registro extends AppCompatActivity {
         re = findViewById(R.id.radio_Estudiante);
         rt = findViewById(R.id.radio_Tutor);
 
+
+
         btn_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InetAddress ip = InetAddress.getLocalHost();
                 if(!ed_nombre.getText().toString().isEmpty() && !ed_apellido.getText().toString().isEmpty() && !ed_correo.getText().toString().isEmpty() && !ed_nusuario.getText().toString().isEmpty() && !ed_contrasena.getText().toString().isEmpty()) {
                     if(re.isChecked() || rt.isChecked()) {
                         if (re.isChecked()) {
-                            ejecutarservicio("http://"+ ip.getHostAddress() +"/webservices/registro.php");
+                            ejecutarservicio("http://192.168.0.5:80/webservices/registro.php");
                             Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
                             int_registroEst.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroEst);
                         }
                         if (rt.isChecked()) {
-                            ejecutarservicio("http://"+ ip.getHostAddress() +"/webservices/registro.php");
+                            ejecutarservicio("http://192.168.0.5:80/webservices/registro.php");
                             Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
                             int_registroTut.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroTut);
