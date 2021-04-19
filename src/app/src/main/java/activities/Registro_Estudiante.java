@@ -101,7 +101,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         try {
             JSONArray jsonArray = new JSONArray(response);
             String texto;
-            for (int i = 1; i < jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 texto = jsonArray.getJSONObject(i).getString("Ncarrera");
                 listado.add(texto);
             }
