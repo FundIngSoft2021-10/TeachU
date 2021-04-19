@@ -54,6 +54,7 @@ public class Login extends AppCompatActivity {
                 }
                 if(ingresar){
                     Intent home = new Intent(Login.this, Home.class);
+                    home.putExtra("Usuario", usuario.getText().toString());
                     startActivity(home);
                 }else{
                     Toast.makeText(getApplicationContext(), "USUARIO O CONTRASENA INCORRECTA", Toast.LENGTH_SHORT).show();

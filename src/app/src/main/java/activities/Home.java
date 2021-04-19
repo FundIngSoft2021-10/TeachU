@@ -10,19 +10,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity {
     Perfil perfil = new Perfil();
     Buscar buscar = new Buscar();
     Configuracion config = new Configuracion();
+    String usuario ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        usuario = getIntent().getExtras().getString("Usuario");
+        perfil.SetUsuario(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        loadFragment(perfil);
         loadFragment(buscar);
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

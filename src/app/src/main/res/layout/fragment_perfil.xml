@@ -5,48 +5,88 @@
     tools:context="activities.Perfil">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:text="Perfil"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:text="Perfil" />
+        android:textSize="40sp" />
 
-    <TextView
-        android:id="@+id/NombreU_Perfil"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/Nombre_Perfil"
+        android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="180dp"
+        android:editable="false"
         android:textSize="20dp"
-        android:text="NombreUsuario" />
+        android:visibility="visible" />
 
     <Button
-        android:id="@+id/btEdit_Perfil"
+        android:id="@+id/btNombre_Perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginLeft="300dp"
         android:text="Edit" />
 
-    <TextView
-        android:id="@+id/Correo_Perfil"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/Apellido_Perfil"
+        android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="260dp"
+        android:editable="false"
         android:textSize="20dp"
-        android:text="Correo" />
+        android:visibility="visible" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btEdit_Apellido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="300dp"
+        android:text="Edit" />
+
+    <EditText
+        android:id="@+id/Correo_Perfil"
+        android:layout_width="212dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="330dp"
+        android:editable="false"
+        android:textSize="20dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/btEdit_Correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="300dp"
+        android:text="Edit" />
+
+
+    <EditText
+        android:id="@+id/Usuario_Perfil"
+        android:layout_width="214dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="400dp"
+        android:editable="false"
+        android:textSize="20dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/btEdit_Usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="300dp"
         android:text="Edit" />
 
 </FrameLayout>
