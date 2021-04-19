@@ -43,13 +43,10 @@ public class  Registro_Estudiante extends AppCompatActivity {
 
     public void obtDatos() {
         AsyncHttpClient cliente = new AsyncHttpClient();
-<<<<<<< HEAD
-        String url = "http://192.168.0.28:80/webservices/prueba.php";
-=======
+
 
         String url = "http://192.168.100.137:80/webservices/prueba.php";
 
->>>>>>> a0201f1b9f52845b58be117c6015eba5bf743a17
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
 

@@ -50,21 +50,14 @@ public class Registro extends AppCompatActivity {
                 if(!ed_nombre.getText().toString().isEmpty() && !ed_apellido.getText().toString().isEmpty() && !ed_correo.getText().toString().isEmpty() && !ed_nusuario.getText().toString().isEmpty() && !ed_contrasena.getText().toString().isEmpty()) {
                     if(re.isChecked() || rt.isChecked()) {
                         if (re.isChecked()) {
-<<<<<<< HEAD
-                            ejecutarservicio("http://192.168.0.28:80/webservices/registro.php");
-=======
+
                             ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
->>>>>>> a0201f1b9f52845b58be117c6015eba5bf743a17
                             Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
                             int_registroEst.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroEst);
                         }
                         if (rt.isChecked()) {
-<<<<<<< HEAD
-                            ejecutarservicio("http://192.168.0.28:80/webservices/registro.php");
-=======
                             ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
->>>>>>> a0201f1b9f52845b58be117c6015eba5bf743a17
                             Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
                             int_registroTut.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroTut);
