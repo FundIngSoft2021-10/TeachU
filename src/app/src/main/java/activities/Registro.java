@@ -51,13 +51,13 @@ public class Registro extends AppCompatActivity {
                     if(re.isChecked() || rt.isChecked()) {
                         if (re.isChecked()) {
 
-                            ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                            ejecutarservicio("https://webserviceteachu.000webhostapp.com/index.php/registro.php");
                             Intent int_registroEst = new Intent(Registro.this, Registro_Estudiante.class);
                             int_registroEst.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroEst);
                         }
                         if (rt.isChecked()) {
-                            ejecutarservicio("http://192.168.100.137:80/webservices/registro.php");
+                            ejecutarservicio("https://webserviceteachu.000webhostapp.com/index.php/registro.php");
                             Intent int_registroTut = new Intent(Registro.this, Registro_Tutor.class);
                             int_registroTut.putExtra("NombreU",ed_nusuario.getText().toString());
                             startActivity(int_registroTut);

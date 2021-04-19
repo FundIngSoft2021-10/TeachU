@@ -40,7 +40,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro__estudiante);
         id_usuario = getIntent().getExtras().getString("NombreU");
-        buscarId("http://192.168.100.137/webservices/usuarios.php");
+        buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
         listado = (Spinner) findViewById(R.id.spinnercarrera);
         obtDatos();
         id_usuario = getIntent().getExtras().getString("NombreU");
@@ -52,7 +52,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         btn_seleccionar_carrera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buscarId("http://192.168.100.137/webservices/usuarios.php");
+                buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
                 listado.setEnabled(false);
                 btn_terminarRegistro.setEnabled(true);
@@ -62,7 +62,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                buscarId("http://192.168.100.137/webservices/usuarios.php");
+                buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 salida.setText("Usuario:"+id+" "+"carrera:"+listado.getSelectedItem().toString());
             }
         });
@@ -73,7 +73,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         AsyncHttpClient cliente = new AsyncHttpClient();
 
 
-        String url = "http://192.168.100.137:80/webservices/prueba.php";
+        String url = "https://webserviceteachu.000webhostapp.com/index.php/prueba.php";
 
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
