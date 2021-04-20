@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.HomeTutor">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:text="AgregarTutoria" />
+
+    <EditText
+        android:layout_width="243dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="130dp"/>
+    <EditText
+        android:layout_width="243dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"/>
+
+</FrameLayout>

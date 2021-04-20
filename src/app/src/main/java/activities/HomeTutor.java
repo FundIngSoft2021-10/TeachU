@@ -10,24 +10,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-public class Home extends AppCompatActivity {
+public class HomeTutor extends AppCompatActivity {
     Perfil perfil = new Perfil();
-    Buscar buscar = new Buscar();
-    Configuracion config = new Configuracion();
+    MisTutorias miTuto = new MisTutorias();
+    AgregarTutoria agTutoria = new AgregarTutoria();
     String usuario ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_tutor);
         usuario = getIntent().getExtras().getString("Usuario");
         perfil.SetUsuario(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(perfil);
-        loadFragment(buscar);
+        loadFragment(miTuto);
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -36,11 +35,11 @@ public class Home extends AppCompatActivity {
                 case R.id.Perfil:
                     loadFragment(perfil);
                     return true;
-                case R.id.Buscar:
-                    loadFragment(buscar);
+                case R.id.MisTutorias:
+                    loadFragment(miTuto);
                     return true;
-                case R.id.Configuracion:
-                    loadFragment(config);
+                case R.id.Agregar:
+                    loadFragment(agTutoria);
                     return true;
             }
             return false;
@@ -48,7 +47,7 @@ public class Home extends AppCompatActivity {
     };
     public void loadFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.Home_Container, fragment);
+        transaction.replace(R.id.Home_Container_Tutor, fragment);
         transaction.commit();
     }
 }

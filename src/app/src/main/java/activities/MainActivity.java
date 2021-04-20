@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         };
-
         Timer tiempoo = new Timer();
         tiempoo.schedule(tarea, 2000);
-
     }
 }
