@@ -13,17 +13,73 @@
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
         android:textSize="40sp"
-        android:text="AgregarTutoria" />
+        android:text="AgregarCalse" />
 
-    <EditText
-        android:layout_width="243dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="130dp"/>
-    <EditText
-        android:layout_width="243dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Selecciona Carrera"
+        android:textColor="@color/black"
+        android:layout_marginLeft="50dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="230dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Selecciona Clase"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerCarrera_Agregar"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="170dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerClase_Agregar"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="300dp"/>
+
+    <Button
+        android:id="@+id/button_Guardar_Clase_Agregar"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:layout_marginLeft="100dp"
+        android:text="Guardar Clase" />
+    <Button
+        android:id="@+id/button_cerrarSesion_Agregar"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="500dp"
+        android:text="Cerrar Sesion" />
+
+    <Button
+        android:id="@+id/button_SelecCar_Agregar"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="160dp"
+        android:text="selec" />
+    <Button
+        android:id="@+id/button_SeleClas_Agregar"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="290dp"
+        android:text="Selec" />
+
+
+
 
 </FrameLayout>

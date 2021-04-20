@@ -23,6 +23,7 @@ public class HomeTutor extends AppCompatActivity {
         setContentView(R.layout.activity_home_tutor);
         usuario = getIntent().getExtras().getString("Usuario");
         perfil.SetUsuario(usuario);
+        agTutoria.setTutor(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(perfil);

@@ -13,7 +13,7 @@
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
         android:textSize="40sp"
-        android:text="Mis Tutorias" />
+        android:text="Mis Clases" />
 
     <ListView
         android:layout_width="312dp"

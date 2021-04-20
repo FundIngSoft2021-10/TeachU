@@ -5,6 +5,7 @@ import java.util.Date;
 public class Tutoria {
     private String idTutoria;
     private Date fecha;
+
     private int duracion;
     private long precio;
 

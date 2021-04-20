@@ -15,4 +15,12 @@
         android:textSize="40sp"
         android:text="Configuracion" />
 
+    <Button
+        android:id="@+id/button_cerrarSesion_Configuracion"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="170dp"
+        android:text="Cerrar Sesion" />
+
 </FrameLayout>
