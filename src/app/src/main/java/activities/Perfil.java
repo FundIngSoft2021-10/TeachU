@@ -60,7 +60,6 @@ public class Perfil extends Fragment {
         cOrreo = view.findViewById(R.id.Correo_Perfil);
         nOmbre = view.findViewById(R.id.Nombre_Perfil);
         nUsuario.setHint(this.GetUsuario());
-        String AP= "", CO="", NO="";
         for(int i = 0; i < usuarios.size(); i++){
             if (GetUsuario().equalsIgnoreCase(usuarios.get(i))){
                 aPellido.setHint(apellidos.get(i));
@@ -69,6 +68,37 @@ public class Perfil extends Fragment {
                 break;
             }
         }
+        Button BtEdit_Nombre = view.findViewById(R.id.btNombre_Perfil);
+        Button BtEdit_Apellido = view.findViewById(R.id.btEdit_Apellido);
+        Button BtEdit_Correo = view.findViewById(R.id.btEdit_Correo);
+        Button BtEdit_Usuario = view.findViewById(R.id.btEdit_Usuario);
+
+        BtEdit_Nombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nOmbre.setEnabled(true);
+            }
+        });
+
+        BtEdit_Apellido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aPellido.setEnabled(true);
+            }
+        });
+        BtEdit_Correo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cOrreo.setEnabled(true);
+            }
+        });
+        BtEdit_Usuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nUsuario.setEnabled(true);
+            }
+        });
+
     }
     public String GetUsuario(){
         return this.usuario;

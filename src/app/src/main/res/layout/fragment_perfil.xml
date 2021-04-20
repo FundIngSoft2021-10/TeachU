@@ -22,17 +22,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="180dp"
-        android:editable="false"
+        android:enabled="false"
         android:textSize="20dp"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/btNombre_Perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_width="58dp"
+        android:layout_height="36dp"
         android:layout_marginLeft="300dp"
-        android:text="Edit" />
+        android:layout_marginTop="190dp"
+        android:text="Edit"
+        android:textSize="10sp" />
 
     <EditText
         android:id="@+id/Apellido_Perfil"
@@ -40,17 +41,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="260dp"
-        android:editable="false"
+        android:enabled="false"
         android:textSize="20dp"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/btEdit_Apellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        android:layout_width="58dp"
+        android:layout_height="36dp"
         android:layout_marginLeft="300dp"
-        android:text="Edit" />
+        android:layout_marginTop="260dp"
+        android:text="Edit"
+        android:textSize="10sp" />
 
     <EditText
         android:id="@+id/Correo_Perfil"
@@ -58,17 +60,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="330dp"
-        android:editable="false"
+        android:enabled="false"
         android:textSize="20dp"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/btEdit_Correo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
+        android:layout_width="57dp"
+        android:layout_height="36dp"
         android:layout_marginLeft="300dp"
-        android:text="Edit" />
+        android:layout_marginTop="330dp"
+        android:text="Edit"
+        android:textSize="10sp" />
 
 
     <EditText
@@ -77,16 +80,25 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="400dp"
-        android:editable="false"
+        android:enabled="false"
         android:textSize="20dp"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/btEdit_Usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_width="56dp"
+        android:layout_height="37dp"
         android:layout_marginLeft="300dp"
-        android:text="Edit" />
+        android:layout_marginTop="400dp"
+        android:text="Edit"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/Bt_Guardar_Cambios"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="500dp"
+        android:text="Guardar Cambios" />
 
 </FrameLayout>
