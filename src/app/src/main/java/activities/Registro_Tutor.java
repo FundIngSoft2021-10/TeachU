@@ -40,7 +40,7 @@ public class Registro_Tutor extends AppCompatActivity {
     EditText N_documento, descripcion;
     TextView salida;
     String Nusuario;
-    String id;
+    String id, id_clase;
     Button btn_confirmarDatos,btn_confirmarRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class Registro_Tutor extends AppCompatActivity {
             public void onClick(View v) {
                 if(!N_documento.getText().toString().isEmpty() && !descripcion.getText().toString().isEmpty()) {
                     buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
+                    buscarIdClase("https://webserviceteachu.000webhostapp.com/index.php/Clases.php");
                     salida.setText(id);
                     btn_confirmarRegistro.setEnabled(true);
                     spiner_tipodoc.setEnabled(false);
@@ -83,8 +84,10 @@ public class Registro_Tutor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
-                salida.setText(id);
+                buscarIdClase("https://webserviceteachu.000webhostapp.com/index.php/Clases.php");
+                salida.setText("Usuario: "+id+" Clase:"+id_clase);
                 ingresarTutor("https://webserviceteachu.000webhostapp.com/index.php/Registro_Tutor.php");
+                ingresarTutorXclase("https://webserviceteachu.000webhostapp.com/index.php/Registro_TutorxClase.php");
                 Intent int_login = new Intent(Registro_Tutor.this,Login.class);
                 startActivity(int_login);
             }
@@ -186,5 +189,57 @@ public class Registro_Tutor extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+    private void ingresarTutorXclase(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("id_usuario",id);
+                parametros.put("id_clase",id_clase);
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    private void buscarIdClase(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        String aux = jsonObject.getString("Nclase");
+                        if(aux.equals(spiner_clases.getSelectedItem().toString())){
+                            id_clase = jsonObject.getString("idClase");
+                        }
+
+
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
     }
 }

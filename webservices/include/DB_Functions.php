@@ -109,11 +109,9 @@ public function existeUsuarioNusuario($Nusuario){
 			return false;
 		}
 	}
-	
-	
-	public function updateUsuario($nombre, $apellido, $correo, $Nusuario, $id ){
-		$query = $this->con->prepare("UPDATE Usuario SET Nombre = ?, Apellido = ?, CorreoInst = ?, Nusuario = ? WHERE Id_Usuario = ?");
-		$query->bind_param("ssssi", $nombre, $apellido, $correo, $Nusuario, $id);
+	public function insertarTutorxClase($id_usuario, $id_clase){
+		$query = $this->con->prepare("INSERT INTO TutorXClase(Tutor_Id_Usuario,Clases_idClase) VALUES (?, ?)");
+		$query->bind_param("ii", $id_usuario, $id_clase);
 		$resultado = $query->execute();
 		$query->close();
 		
@@ -129,7 +127,24 @@ public function existeUsuarioNusuario($Nusuario){
 		else{
 			return false;
 		}
-		
+	}
+	
+	public function existeUsuarioEstudiante($id){
+		$query = $this->con->prepare("SELECT * FROM Estudiante WHERE Id_Usuario = ?");
+		$query->bind_param("s", $id);
+		$query->execute();
+		$usuario = $query->get_result()->fetch_assoc();
+		$query->close();
+		return $usuario; 
+	}
+	
+	public function existeUsuarioTutor($id){
+		$query = $this->con->prepare("SELECT * FROM Tutor WHERE Id_Usuario = ?");
+		$query->bind_param("s", $id);
+		$query->execute();
+		$usuario = $query->get_result()->fetch_assoc();
+		$query->close();
+		return $usuario; 
 	}
 }
 
