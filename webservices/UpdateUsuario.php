@@ -3,7 +3,7 @@ require_once 'include/DB_Functions.php';
 $db = new DB_Functions();
  
 $response = array("error" => FALSE);
-if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo"]) isset($_POST["nUsuario"])&& isset($_POST["id_usuario"])){
+if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo"]) && isset($_POST["nUsuario"]) && isset($_POST["id_usuario"])){
 	$nombre = $_POST["nombre"];
 	$apellido = $_POST["apellido"];
     $correo = $_POST["correo"];
@@ -16,7 +16,7 @@ if (isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["correo
 			$response["Usuario"]["Nombre"] = $usuario["Nombre"];
 			$response["Usuario"]["Apellido"] = $usuario["Apellido"];
 			$response["Usuario"]["CorreoInst"] = $usuario["CorreoInst"];
-			$response["Usuario"]["Nusuario"] = $usuario["Nusuario"];
+			$response["Usuario"]["nUsuario"] = $usuario["nUsuario"];
 			echo json_encode($response);
 		}
 	else{
