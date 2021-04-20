@@ -112,7 +112,7 @@ public function existeUsuarioNusuario($Nusuario){
 	
 	
 	public function updateUsuario($nombre, $apellido, $correo, $Nusuario, $id ){
-		$query = this->con->prepare("UPDATE Usuario SET Nombre = ?, Apellido = ?, CorreoInst = ?, Nusuario = ? WHERE Id_Usuario = ?");
+		$query = $this->con->prepare("UPDATE Usuario SET Nombre = ?, Apellido = ?, CorreoInst = ?, Nusuario = ? WHERE Id_Usuario = ?");
 		$query->bind_param("ssssi", $nombre, $apellido, $correo, $Nusuario, $id);
 		$resultado = $query->execute();
 		$query->close();
