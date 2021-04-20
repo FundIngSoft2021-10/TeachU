@@ -13,6 +13,13 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.teachu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -22,6 +29,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -29,15 +38,26 @@ import cz.msebera.android.httpclient.Header;
 public class Perfil extends Fragment {
 
 
-    private String usuario;
+    private String usuario ,id;
+
+
+
     EditText nUsuario, aPellido, cOrreo, nOmbre;
     ArrayList<String> usuarios = new ArrayList<String>();
     ArrayList<String> apellidos = new ArrayList<String>();
     ArrayList<String> correos = new ArrayList<String>();
     ArrayList<String> nombres = new ArrayList<String>();
+    ArrayList<String> ips = new ArrayList<String>();
         public Perfil() {
     }
 
+    public void setIdU(String id) {
+        this.id = id;
+    }
+
+    public String getIdU() {
+        return id;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +85,8 @@ public class Perfil extends Fragment {
                 aPellido.setHint(apellidos.get(i));
                 cOrreo.setHint(correos.get(i));
                 nOmbre.setHint(nombres.get(i));
+                setIdU(ips.get(i));
+
                 break;
             }
         }
@@ -102,7 +124,7 @@ public class Perfil extends Fragment {
         BtEdit_Buscador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ejecutarservicio("https://webserviceteachu.000webhostapp.com/index.php/UpdateUsuario.php");
             }
         });
 
@@ -121,6 +143,7 @@ public class Perfil extends Fragment {
         cliente[0].post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                ips = obtDatosJason(new String(responseBody), "Id_Usuario");
                 apellidos = obtDatosJason(new String(responseBody), "Apellido");
                 usuarios = obtDatosJason(new String(responseBody), "Nusuario");
                 correos = obtDatosJason(new String(responseBody), "CorreoInst");
@@ -147,6 +170,46 @@ public class Perfil extends Fragment {
             throw new RuntimeException(e);
         }
         return listado;
+    }
+
+    private void ejecutarservicio(String URL){
+        //setContentView(R.layout.activity_registro);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext().getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext().getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("id_usuario",getIdU());
+                if(nOmbre.getText().toString().isEmpty())
+                    parametros.put("nombre",nOmbre.getHint().toString());
+                else
+                    parametros.put("nombre",nOmbre.getText().toString());
+                if(aPellido.getText().toString().isEmpty())
+                    parametros.put("apellido",aPellido.getHint().toString());
+                else
+                    parametros.put("apellido",aPellido.getText().toString());
+                if(cOrreo.getText().toString().isEmpty())
+                    parametros.put("correo",cOrreo.getHint().toString());
+                else
+                    parametros.put("correo",cOrreo.getText().toString());
+                if(nUsuario.getText().toString().isEmpty())
+                    parametros.put("nUsuario",nUsuario.getHint().toString());
+                else
+                    parametros.put("nUsuario",nUsuario.getText().toString());
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext().getApplicationContext());
+        requestQueue.add(stringRequest);
     }
 
 }
