@@ -109,6 +109,28 @@ public function existeUsuarioNusuario($Nusuario){
 			return false;
 		}
 	}
+	
+	
+	public function updateUsuario($nombre, $apellido, $correo, $Nusuario, $id ){
+		$query = this->con->prepare("UPDATE Usuario SET Nombre = ?, Apellido = ?, CorreoInst = ?, Nusuario = ? WHERE Id_Usuario = ?");
+		$query->bind_param("ssssi", $nombre, $apellido, $correo, $Nusuario, $id);
+		$resultado = $query->execute();
+		$query->close();
+		
+		if($resultado){
+			$stmt = $this->con->prepare("SELECT * FROM Usuario WHERE CorreoInst = ?");
+            $stmt->bind_param("s", $correo);
+			$stmt->execute();
+			$usuario = $stmt->get_result()->fetch_assoc();
+			$stmt->close();
+			
+			return $usuario;
+		}
+		else{
+			return false;
+		}
+		
+	}
 }
 
 ?>
