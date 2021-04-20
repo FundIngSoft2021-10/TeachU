@@ -72,6 +72,7 @@ public class Perfil extends Fragment {
         Button BtEdit_Apellido = view.findViewById(R.id.btEdit_Apellido);
         Button BtEdit_Correo = view.findViewById(R.id.btEdit_Correo);
         Button BtEdit_Usuario = view.findViewById(R.id.btEdit_Usuario);
+        Button BtEdit_Buscador = view.findViewById(R.id.Bt_Guardar_Cambios);
 
         BtEdit_Nombre.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,12 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
                 nUsuario.setEnabled(true);
+            }
+        });
+        BtEdit_Buscador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

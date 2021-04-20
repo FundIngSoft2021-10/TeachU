@@ -14,5 +14,8 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         android:text="Buscar" />
+    <EditText
+        android:layout_width=""
+        android:layout_height=""
 
 </FrameLayout>
