@@ -2,26 +2,21 @@
  
 require_once 'include/DB_Functions.php';
 $db = new DB_Functions();
-$nombre="daniel";
-$apellido="mango";
-$correo="manzana";
-$contrasena="1234";
-$nusuario="manguito";
-$id_usuario=$db->calcularId();
+$id_usuario = "2";
+$cedula = "6567";
+$tipodoc = "TI";
+$descripcion = "soy bueno";
+$ranking = "4";
 $response = array("error" => FALSE);
-if($db->existeUsuario($correo)){
-		$response["error"] = TRUE;
-        $response["error_msg"] = "Usuario ya existe con correo  " . $correo;
-		echo json_encode($response);
-	}
-	else{
-		$usuario = $db->insertarUsuario($nombre, $apellido,$contrasena,$correo,$nusuario,$id_usuario["nid"]);
+
+		$usuario = $db->insertarTutor($id_usuario,$cedula,$tipodoc,$descripcion,$ranking);
 		if($usuario){
 			$response["error"] = FALSE;
-			$response["Usuario"]["Nombre"] = $usuario["Nombre"];
-			$response["Usuario"]["Apellido"] = $usuario["Apellido"];
-			$response["Usuario"]["CorreoInst"] = $usuario["CorreoInst"];
-			$response["Usuario"]["Nusuario"] = $usuario["Nusuario"];
+			$response["Tutor"]["Id_Usuario"] = $usuario["Id_Usuario"];
+			$response["Tutor"]["Cedula"] = $usuario["Cedula"];
+			$response["Tutor"]["tipoDoc"] = $usuario["tipoDoc"];
+			$response["Tutor"]["Descripcion"] = $usuario["Descripcion"];
+			$response["Tutor"]["Ranking"] = $usuario["Ranking"];
 			echo json_encode($response);
 		}
 		else{
@@ -29,6 +24,6 @@ if($db->existeUsuario($correo)){
 			$response["ms_error"] = "Error";
 			echo json_encode($response);
 		}
-	}
+	
 
 ?>

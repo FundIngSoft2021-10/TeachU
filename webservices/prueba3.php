@@ -5,8 +5,8 @@ $db = new DB_Functions();
 
 $Nusuario = $_GET['Nusuario'];
 
-$db->existeUsuarioNusuario($Nusuario);
-
+$res = $db->existeUsuarioNusuario($Nusuario);
+echo json_encode($res); 
 
 
 ?>
