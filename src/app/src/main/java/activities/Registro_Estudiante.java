@@ -48,7 +48,7 @@ public class  Registro_Estudiante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro__estudiante);
         id_usuario = getIntent().getExtras().getString("NombreU");
-        buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
+        //buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
         listado = (Spinner) findViewById(R.id.spinnercarrera);
         obtDatos();
         id_usuario = getIntent().getExtras().getString("NombreU");
