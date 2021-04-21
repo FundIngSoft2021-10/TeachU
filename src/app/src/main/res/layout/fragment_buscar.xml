@@ -40,6 +40,7 @@
 
     <ListView
         android:layout_width="350dp"
+        android:id="@+id/lista_resultados"
         android:layout_height="478dp"
         android:layout_marginLeft="27dp"
         android:layout_marginTop="230dp" />
