@@ -74,10 +74,20 @@ public class Buscar extends Fragment {
             public void onClick(View v) {
                 resultado.clear();
                 salida.setAdapter(null);
-                String nclase = busqueda.getText().toString().toUpperCase();
-                for(int i= 0;i<clases.size();i++){
-                    if(clases.get(i).contains(nclase)){
-                        resultado.add("Tutor: "+tutores.get(i)+" "+"Asignarura: "+clases.get(i));
+                if(spiner_Filtro.getSelectedItem().toString().equals("Clases")) {
+                    String nclase = busqueda.getText().toString().toUpperCase();
+                    for (int i = 0; i < clases.size(); i++) {
+                        if (clases.get(i).contains(nclase)) {
+                            resultado.add("Tutor: " + tutores.get(i) + " " + "Asignarura: " + clases.get(i));
+                        }
+                    }
+                }
+                if(spiner_Filtro.getSelectedItem().toString().equals("Tutor")) {
+                    String ntutor = busqueda.getText().toString().toUpperCase();
+                    for (int i = 0; i < tutores.size(); i++) {
+                        if (tutores.get(i).contains(ntutor)) {
+                            resultado.add("Tutor: " + tutores.get(i) + " " + "Asignarura: " + clases.get(i));
+                        }
                     }
                 }
                 ArrayAdapter<String> adaptador2 = new ArrayAdapter<String>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1, resultado);
@@ -116,7 +126,7 @@ public class Buscar extends Fragment {
             JSONArray jsonArray = new JSONArray(response);
             String texto;
             for (int i = 0; i < jsonArray.length(); i++) {
-                texto = jsonArray.getJSONObject(i).getString("Nombre");
+                texto = jsonArray.getJSONObject(i).getString("Nombre").toUpperCase();
                 listado.add(texto);
                 clases.add(jsonArray.getJSONObject(i).getString("Nclase").toUpperCase());
             }
