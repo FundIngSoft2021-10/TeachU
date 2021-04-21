@@ -86,8 +86,16 @@ public class Registro_Tutor extends AppCompatActivity {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 buscarIdClase("https://webserviceteachu.000webhostapp.com/index.php/Clases.php");
                 salida.setText("Usuario: "+id+" Clase:"+id_clase);
-                ingresarTutor("https://webserviceteachu.000webhostapp.com/index.php/Registro_Tutor.php");
-                ingresarTutorXclase("https://webserviceteachu.000webhostapp.com/index.php/Registro_TutorxClase.php");
+                if(id.equals(null)){
+                    Toast.makeText(getApplicationContext(), "Fallo en el registro intente mas tarde", Toast.LENGTH_SHORT).show();
+                }else {
+                    ingresarTutor("https://webserviceteachu.000webhostapp.com/index.php/Registro_Tutor.php");
+                }
+                if (id.equals(null) || id_clase.equals(null)){
+                    Toast.makeText(getApplicationContext(), "Fallo en el registro intente mas tarde", Toast.LENGTH_SHORT).show();
+                }else {
+                    ingresarTutorXclase("https://webserviceteachu.000webhostapp.com/index.php/Registro_TutorxClase.php");
+                }
                 Intent int_login = new Intent(Registro_Tutor.this,Login.class);
                 startActivity(int_login);
             }

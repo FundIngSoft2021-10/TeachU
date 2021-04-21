@@ -74,7 +74,11 @@ public class  Registro_Estudiante extends AppCompatActivity {
                 buscarId("https://webserviceteachu.000webhostapp.com/index.php/usuarios.php");
                 buscarIdCarrera("https://webserviceteachu.000webhostapp.com/index.php/prueba.php");
                 salida.setText("Usuario:"+id+" "+"carrera:"+id_carrera);
-                insertarEstudiante("https://webserviceteachu.000webhostapp.com/index.php/Registro_estudiantes.php");
+                if(id.equals(null) || id_carrera.equals(null)){
+                    Toast.makeText(getApplicationContext(), "Fallo en el registro intente mas tarde", Toast.LENGTH_SHORT).show();
+                }else {
+                    insertarEstudiante("https://webserviceteachu.000webhostapp.com/index.php/Registro_estudiantes.php");
+                }
                 Intent int_login = new Intent(Registro_Estudiante.this,Login.class) ;
                 startActivity(int_login);
             }
