@@ -17,8 +17,47 @@
 
     <ListView
         android:layout_width="312dp"
-        android:layout_height="581dp"
+        android:layout_height="251dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="130dp"/>
+        android:layout_marginTop="130dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="400dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:text="Mi Disponibilidad"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <ListView
+        android:id="@+id/Lista_Mi_Disponibilidad"
+        android:layout_width="141dp"
+        android:layout_height="196dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="500dp" />
+
+    <Spinner
+        android:id="@+id/spinnerDia"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="500dp" />
+
+    <Spinner
+        android:id="@+id/spinnerHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="500dp" />
+
+    <Button
+        android:id="@+id/buttonDiponibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="530dp"
+        android:text="Insertar disponibilidad" />
 
 </FrameLayout>

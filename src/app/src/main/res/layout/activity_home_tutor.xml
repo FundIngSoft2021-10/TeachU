@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.Home">
+    tools:context="activities.HomeTutor">
 
     <FrameLayout
         android:id="@+id/Home_Container_Tutor"
@@ -14,7 +14,7 @@
         app:layout_behavior = "@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/NavegationBar"
+        android:id="@+id/NavegationBar_Tutor"
         style="@style/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

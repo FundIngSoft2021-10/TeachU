@@ -35,6 +35,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.Header;
 import entities.Carrera;
@@ -42,6 +44,7 @@ import entities.Clase;
 
 
 public class AgregarTutoria extends Fragment {
+
     Spinner listadoCar, listadoCla;
     ArrayList<String> idCarreras = new ArrayList<String>();
     ArrayList<String> nCarreras = new ArrayList<String>();
@@ -52,10 +55,19 @@ public class AgregarTutoria extends Fragment {
     ArrayList<String> usuarios = new ArrayList<String>();
     ArrayList<String> ips = new ArrayList<String>();
     Button SelecCar, SelecClas;
-    String tutor, idTutor;
+    private String tutor, idTutor, idClase;
 
-    public String getTutor() {
+
+        public String getTutor() {
         return tutor;
+    }
+
+    public String getIdClase() {
+        return idClase;
+    }
+
+    public void setIdClase(String idClase) {
+        this.idClase = idClase;
     }
 
     public void setTutor(String tutor) {
@@ -69,7 +81,6 @@ public class AgregarTutoria extends Fragment {
     public void setIdTutor(String idTutor) {
         this.idTutor = idTutor;
     }
-
     public AgregarTutoria() {
         // Required empty public constructor
     }
@@ -95,12 +106,16 @@ public class AgregarTutoria extends Fragment {
         listadoCla = view.findViewById(R.id.spinnerClase_Agregar);
         SelecCar = view.findViewById(R.id.button_SelecCar_Agregar);
         SelecClas = view.findViewById(R.id.button_SeleClas_Agregar);
-        obtDatos();
-        obtDatosCla();
+        this.obtDatos();
+        this.obtDatosCla();
+        this.obtDatosUsuarios();
         BuscarId(getTutor());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, nCarreras);
+        listadoCar.setAdapter(adapter);
         SelecCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Clases.clear();
                 for(int i = 0; i < nCarreras.size(); i++){
                     if(nCarreras.get(i).equalsIgnoreCase(listadoCar.getSelectedItem().toString())){
@@ -113,13 +128,24 @@ public class AgregarTutoria extends Fragment {
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, Clases);
                 listadoCla.setAdapter(adapter);
+                listadoCla.setEnabled(true);
             }
         });
-
+        SelecClas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listadoCla.setEnabled(false);
+                for (int i = 0; i < Nclases.size(); i++){
+                    if(listadoCla.getSelectedItem().toString().equalsIgnoreCase(Nclases.get(i))){
+                        setIdClase(idlases.get(i));
+                    }
+                }
+            }
+        });
         guardarClases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                insertarClase("https://webserviceteachu.000webhostapp.com/index.php/Registro_TutorxClase.php");
             }
         });
 
@@ -148,7 +174,6 @@ public class AgregarTutoria extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 idCarreras = obtDatosJason(new String(responseBody), "IdCarrera");
                 nCarreras = obtDatosJason(new String(responseBody), "Ncarrera");
-                CargaLista(nCarreras);
             }
 
             @Override
@@ -158,10 +183,6 @@ public class AgregarTutoria extends Fragment {
         });
     }
 
-    public void CargaLista(ArrayList<String> datos) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, datos);
-        listadoCar.setAdapter(adapter);
-    }
 
     public void obtDatosCla() {
         final AsyncHttpClient[] cliente = {new AsyncHttpClient()};
@@ -233,6 +254,7 @@ public class AgregarTutoria extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
                 parametros.put("id_usuario",getIdTutor());
+                parametros.put("id_clase",getIdClase());
                 return parametros;
             }
         };
@@ -240,7 +262,8 @@ public class AgregarTutoria extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void BuscarId(String Usuario){
+
+    public void BuscarId (String Usuario){
         for (int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).equalsIgnoreCase(Usuario)){
                 setIdTutor(ips.get(i));
