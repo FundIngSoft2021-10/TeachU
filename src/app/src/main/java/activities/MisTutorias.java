@@ -49,12 +49,15 @@ public class MisTutorias extends Fragment {
     ArrayList<String> usuarios = new ArrayList<String>();
     ArrayList<String> ips = new ArrayList<String>();
     ArrayList<String> TextoLisView = new ArrayList<>();
+    ArrayList<String> TextoMisClases = new ArrayList<>();
     Spinner ListaDia;
     Spinner ListaHora;
-    ListView listaMiDisponibilidad;
+    ListView listaMiDisponibilidad, lxMxCalses;
     ArrayList<String> DxTxId = new ArrayList<String>();
     ArrayList<String> DxTxdia = new ArrayList<String>();
     ArrayList<String> DxTxhora = new ArrayList<String>();
+    ArrayList<String> CxTxid = new ArrayList<String>();
+    ArrayList<String> CxTxNoClass = new ArrayList<String>();
 
     private String usuario, idTutor, idDis;
 
@@ -130,11 +133,13 @@ public class MisTutorias extends Fragment {
         ListaDia = view.findViewById(R.id.spinnerDia);
         ListaHora = view.findViewById(R.id.spinnerHora);
         listaMiDisponibilidad = view.findViewById(R.id.Lista_Mi_Disponibilidad);
+        lxMxCalses = view.findViewById(R.id.Lista_Mis_ClasesView);
         CargaLista(diaNcompleto, ListaDia);
         CargaLista(hora, ListaHora);
         obtDatos();
         obtDatosUsuarios();
         obtDatosDxT();
+        obtDatosCxTxClass();
         BuscarId(getUsuario());
         TextoLisView.clear();
 
@@ -145,6 +150,17 @@ public class MisTutorias extends Fragment {
                 TextoLisView.add(palabra);
             }
         }
+
+        TextoMisClases.clear();
+
+        for(int i = 0; i < CxTxid.size(); i++){
+            if(CxTxid.get(i).equalsIgnoreCase(getIdTutor())){
+                TextoMisClases.add(CxTxNoClass.get(i));
+            }
+        }
+
+        ArrayAdapter<String> adapterMiClases = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, TextoMisClases);
+        lxMxCalses.setAdapter(adapterMiClases);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, TextoLisView);
         listaMiDisponibilidad.setAdapter(adapter);
@@ -234,6 +250,28 @@ public class MisTutorias extends Fragment {
                 DxTxId = obtDatosJason(new String(responseBody), "Tutor_Id_Usuario");
                 DxTxhora = obtDatosJason(new String(responseBody), "hora");
                 DxTxdia = obtDatosJason(new String(responseBody), "dia");
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    public void obtDatosCxTxClass() {
+        AsyncHttpClient cliente = new AsyncHttpClient();
+
+
+        String url = "https://webserviceteachu.000webhostapp.com/index.php/TutorXClaseMiClase.php";
+
+        RequestParams parametros = new RequestParams();
+        parametros.put("clase", 18);
+
+        cliente.post(url, parametros, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                CxTxid = obtDatosJason(new String(responseBody), "Tutor_Id_Usuario");
+                CxTxNoClass = obtDatosJason(new String(responseBody), "Nclase");
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {

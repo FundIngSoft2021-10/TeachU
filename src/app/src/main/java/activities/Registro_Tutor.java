@@ -225,8 +225,6 @@ public class Registro_Tutor extends AppCompatActivity {
                         if(aux.equals(spiner_clases.getSelectedItem().toString())){
                             id_clase = jsonObject.getString("idClase");
                         }
-
-
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }

@@ -16,6 +16,7 @@
         android:text="Mis Clases" />
 
     <ListView
+        android:id="@+id/Lista_Mis_ClasesView"
         android:layout_width="312dp"
         android:layout_height="251dp"
         android:layout_marginLeft="60dp"
