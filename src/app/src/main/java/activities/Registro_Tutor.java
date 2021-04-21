@@ -95,9 +95,10 @@ public class Registro_Tutor extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Fallo en el registro intente mas tarde", Toast.LENGTH_SHORT).show();
                 }else {
                     ingresarTutorXclase("https://webserviceteachu.000webhostapp.com/index.php/Registro_TutorxClase.php");
+                    Intent int_login = new Intent(Registro_Tutor.this,Login.class);
+                    startActivity(int_login);
                 }
-                Intent int_login = new Intent(Registro_Tutor.this,Login.class);
-                startActivity(int_login);
+
             }
         });
     }
