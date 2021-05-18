@@ -10,6 +10,6 @@
         android:title="Buscar"/>
     <item
         android:id="@+id/Configuracion"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_flecha_paabajo"
         android:title="Config"/>
 </menu>

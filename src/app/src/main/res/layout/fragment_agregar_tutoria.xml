@@ -2,27 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="activities.HomeTutor">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="65dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:text="AgregarCalse" />
+        android:gravity="center_horizontal"
+        android:text="AgregarCalse"
+        android:textColor="#673AB7"
+        android:textSize="40sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="120dp"
         android:fontFamily="sans-serif-black"
         android:text="Selecciona Carrera"
-        android:textColor="@color/black"
-        android:layout_marginLeft="50dp"
+        android:textColor="#673AB7"
         android:textSize="20dp" />
 
     <TextView
@@ -32,35 +33,40 @@
         android:layout_marginTop="230dp"
         android:fontFamily="sans-serif-black"
         android:text="Selecciona Clase"
-        android:textColor="@color/black"
+        android:textColor="#673AB7"
         android:textSize="20dp" />
 
     <Spinner
         android:id="@+id/spinnerCarrera_Agregar"
         android:layout_width="242dp"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="170dp"/>
+        android:background="@drawable/spinner_custom"
+        android:layout_marginTop="165dp" />
 
     <Spinner
         android:id="@+id/spinnerClase_Agregar"
         android:layout_width="242dp"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="295dp"
+        android:background="@drawable/spinner_custom" />
 
     <Button
         android:id="@+id/button_Guardar_Clase_Agregar"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="370dp"
+        android:background="@drawable/custtom_button"
         android:text="Guardar Clase" />
+
     <Button
         android:id="@+id/button_cerrarSesion_Agregar"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
+        android:background="@drawable/custtom_button"
         android:layout_marginTop="500dp"
         android:text="Cerrar Sesion" />
 
@@ -70,16 +76,17 @@
         android:layout_height="37dp"
         android:layout_marginLeft="310dp"
         android:layout_marginTop="160dp"
+        android:background="@drawable/custtom_button"
         android:text="selec" />
+
     <Button
         android:id="@+id/button_SeleClas_Agregar"
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginLeft="310dp"
+        android:background="@drawable/custtom_button"
         android:layout_marginTop="290dp"
         android:text="Selec" />
-
-
 
 
 </FrameLayout>

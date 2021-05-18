@@ -15,7 +15,7 @@
         android:background="@drawable/custom_imput"
         android:ems="10"
         android:hint="Numero de cedula"
-        android:padding="4"
+        android:padding="4dp"
         android:inputType="textPersonName"
         android:text=""
         android:textColor="#FFFEFF"
@@ -28,16 +28,15 @@
         android:id="@+id/BTN_completar_registro_tutor"
         android:layout_width="168dp"
         android:layout_height="49dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
         android:background="@drawable/custtom_button"
         android:text="Completar Registro"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toEndOf="@+id/btn_confirmardatos_registroTutor"
         app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintVertical_bias="0.307" />
 
     <EditText
         android:id="@+id/ET_descripcion_RegistroTutor"
@@ -47,7 +46,7 @@
         android:background="@drawable/custom_imput"
         android:ems="10"
         android:hint="Descripcion"
-        android:padding="5dp"
+        android:padding="4dp"
         android:inputType="textPersonName"
         android:text=""
         android:textColor="#F9F8FA"
@@ -109,12 +108,13 @@
         android:layout_marginBottom="56dp"
         android:background="@drawable/custtom_button"
         android:text="Confirmar datos"
+        android:textColor="#F9F9FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ET_descripcion_RegistroTutor"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.532" />
 
     <TextView
         android:id="@+id/salida_tuto"

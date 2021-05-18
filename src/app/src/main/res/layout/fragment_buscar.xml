@@ -2,26 +2,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="activities.Buscar">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:text="Buscar" />
+        android:gravity="center_horizontal"
+        android:text="Buscar"
+        android:textColor="#673AB7"
+        android:textSize="40sp" />
 
     <EditText
         android:id="@+id/Texto_De_Busqueda"
         android:layout_width="246dp"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="130dp"
-        android:hint="Buscar"/>
+        android:layout_marginTop="133dp"
+        android:padding="5dp"
+        android:background="@drawable/custom_imput"
+        android:hint="Buscar"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7" />
 
     <Button
         android:id="@+id/Bt_Buscar"
@@ -29,20 +34,25 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="270dp"
         android:layout_marginTop="130dp"
-        android:hint="Buscar"/>
+        android:background="@drawable/custtom_button"
+        android:hint="Buscar"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
     <Spinner
         android:id="@+id/Filtro_Busqueda"
         android:layout_width="234dp"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
         android:layout_marginLeft="27dp"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="200dp"
+        android:background="@drawable/spinner_custom" />
 
     <ListView
-        android:layout_width="350dp"
         android:id="@+id/lista_resultados"
+        android:layout_width="350dp"
         android:layout_height="478dp"
         android:layout_marginLeft="27dp"
+        android:background="@drawable/spinner_custom"
         android:layout_marginTop="230dp" />
 
 

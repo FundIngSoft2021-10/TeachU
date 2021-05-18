@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="activities.recuperacion_de_contrasena">
 
     <TextView
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:text="Recuperacion de contraseña"
+        android:textColor="#673AB7"
         android:textSize="25dp"
-        android:textColor="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,13 +22,17 @@
 
     <EditText
         android:id="@+id/EDRE_nusuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="222dp"
+        android:layout_height="40dp"
         android:layout_marginTop="76dp"
+        android:background="@drawable/custom_imput"
         android:ems="10"
+        android:hint="Nombre de usuario"
+        android:padding="4dp"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="Nombre de usuario"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,13 +40,17 @@
 
     <EditText
         android:id="@+id/EDRE_ncontrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="222dp"
+        android:layout_height="40dp"
         android:layout_marginTop="64dp"
+        android:background="@drawable/custom_imput"
         android:ems="10"
+        android:hint="Nueva contraseña"
+        android:padding="4dp"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="Nueva contraseña"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +58,10 @@
 
     <Button
         android:id="@+id/btn_gc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="46dp"
         android:layout_marginTop="116dp"
+        android:background="@drawable/custtom_button"
         android:text="Guardar cambios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

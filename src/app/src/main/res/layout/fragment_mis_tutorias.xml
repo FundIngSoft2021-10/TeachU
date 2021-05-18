@@ -2,63 +2,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="activities.Home">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:text="Mis Clases" />
+        android:gravity="center_horizontal"
+        android:text="Mis Clases"
+        android:textColor="#673AB7"
+        android:textSize="40sp" />
 
     <ListView
         android:id="@+id/Lista_Mis_ClasesView"
         android:layout_width="312dp"
         android:layout_height="251dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="130dp" />
+        android:layout_marginTop="130dp"
+        android:background="@drawable/spinner_custom"
+        android:cacheColorHint="#673AB7" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="68dp"
         android:layout_marginTop="400dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
         android:text="Mi Disponibilidad"
-        android:textColor="@color/black"
+        android:textColor="#673AB7"
         android:textSize="40sp" />
 
     <ListView
         android:id="@+id/Lista_Mi_Disponibilidad"
         android:layout_width="141dp"
-        android:layout_height="196dp"
+        android:layout_height="102dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="500dp" />
+        android:layout_marginTop="500dp"
+        android:background="@drawable/spinner_custom"
+        android:cacheColorHint="#673AB7" />
 
     <Spinner
         android:id="@+id/spinnerDia"
         android:layout_width="133dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_marginLeft="180dp"
-        android:layout_marginTop="500dp" />
+        android:layout_marginTop="500dp"
+        android:background="@drawable/spinner_custom" />
 
     <Spinner
         android:id="@+id/spinnerHora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="320dp"
-        android:layout_marginTop="500dp" />
+        android:layout_marginTop="500dp"
+        android:background="@drawable/spinner_custom" />
 
     <Button
         android:id="@+id/buttonDiponibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="34dp"
         android:layout_marginLeft="180dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginTop="540dp"
+        android:background="@drawable/custtom_button"
         android:text="Insertar disponibilidad" />
 
 </FrameLayout>

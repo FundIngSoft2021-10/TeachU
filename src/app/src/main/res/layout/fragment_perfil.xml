@@ -2,27 +2,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context="activities.Perfil">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="#000000"
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
         android:text="Perfil"
-        android:textColor="@color/black"
+        android:textColor="#673AB7"
         android:textSize="40sp" />
 
     <EditText
         android:id="@+id/Nombre_Perfil"
         android:layout_width="211dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="180dp"
+        android:background="@drawable/custom_imput"
         android:enabled="false"
+        android:padding="5dp"
+        android:textColor="#FDFCFC"
+        android:textColorHint="#673AB7"
         android:textSize="20dp"
         android:visibility="visible" />
 
@@ -32,16 +38,22 @@
         android:layout_height="36dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="190dp"
+        android:background="@drawable/custtom_button"
         android:text="Edit"
+        android:textColor="#FFFFFF"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/Apellido_Perfil"
         android:layout_width="211dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="260dp"
+        android:background="@drawable/custom_imput"
         android:enabled="false"
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
         android:textSize="20dp"
         android:visibility="visible" />
 
@@ -51,16 +63,22 @@
         android:layout_height="36dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="260dp"
+        android:background="@drawable/custtom_button"
         android:text="Edit"
+        android:textColor="#FFFFFF"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/Correo_Perfil"
         android:layout_width="212dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="330dp"
+        android:background="@drawable/custom_imput"
         android:enabled="false"
+        android:textColor="#F6F3F6"
+        android:textColorHint="#673AB7"
+        android:padding="5dp"
         android:textSize="20dp"
         android:visibility="visible" />
 
@@ -70,18 +88,24 @@
         android:layout_height="36dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="330dp"
+        android:background="@drawable/custtom_button"
         android:text="Edit"
+        android:textColor="#FFFFFF"
         android:textSize="10sp" />
 
 
     <EditText
         android:id="@+id/Usuario_Perfil"
         android:layout_width="214dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="400dp"
+        android:background="@drawable/custom_imput"
         android:enabled="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
         android:textSize="20dp"
+        android:padding="5dp"
         android:visibility="visible" />
 
     <Button
@@ -90,7 +114,9 @@
         android:layout_height="37dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="400dp"
+        android:background="@drawable/custtom_button"
         android:text="Edit"
+        android:textColor="#FFFFFF"
         android:textSize="10sp" />
 
     <Button
@@ -99,6 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="500dp"
-        android:text="Guardar Cambios" />
+        android:background="@drawable/custtom_button"
+        android:text="Guardar Cambios"
+        android:textColor="#FFFFFF" />
 
 </FrameLayout>
