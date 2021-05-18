@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +38,7 @@ import cz.msebera.android.httpclient.Header;
 public class Login extends AppCompatActivity {
     EditText usuario;
     EditText password;
+    TextView rc;
     String id;
     ArrayList<String> usuarios = new ArrayList<String>();
     ArrayList<String> contrasenas = new ArrayList<String>();
@@ -50,8 +52,16 @@ public class Login extends AppCompatActivity {
         obtDatos();
         usuario = findViewById(R.id.ET_Nusuario);
         password = findViewById(R.id.TextPassword);
+        rc = findViewById(R.id.tv_rc);
 
         Button btn_registrarse = findViewById(R.id.BTN_registro);
+        rc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent recuperacion = new Intent(Login.this, recuperacion_de_contrasena.class);
+                startActivity(recuperacion);
+            }
+        });
         btn_registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
