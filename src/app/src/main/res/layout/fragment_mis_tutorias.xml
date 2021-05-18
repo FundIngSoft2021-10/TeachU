@@ -69,4 +69,21 @@
         android:background="@drawable/custtom_button"
         android:text="Insertar disponibilidad" />
 
+    <TextView
+        android:id="@+id/texthora"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="323dp"
+        android:layout_marginTop="475dp"
+        android:text="Hora"
+        android:textColor="#673AB7" />
+    <TextView
+        android:id="@+id/textdia"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="184dp"
+        android:layout_marginTop="475dp"
+        android:text="Día"
+        android:textColor="#673AB7" />
+
 </FrameLayout>

@@ -42,9 +42,9 @@
     <Spinner
         android:id="@+id/Filtro_Busqueda"
         android:layout_width="234dp"
-        android:layout_height="19dp"
+        android:layout_height="26dp"
         android:layout_marginLeft="27dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="190dp"
         android:background="@drawable/spinner_custom" />
 
     <ListView
