@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="activities.HomeTutor"></activity>
+        <activity android:name="activities.recuperacion_de_contrasena"></activity>
+        <activity android:name="activities.HomeTutor" />
         <activity android:name="activities.Home" />
         <activity android:name="activities.Registro_Tutor" />
         <activity android:name="activities.Registro_Estudiante" />
