@@ -28,6 +28,7 @@
         android:background="@drawable/custom_imput"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:ems="10"
+        android:padding="3dp"
         android:hint="Usuario"
         android:inputType="textPersonName"
         android:text=""
@@ -40,8 +41,8 @@
 
     <Button
         android:id="@+id/BTN_ingreso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="106dp"
+        android:layout_height="39dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/custtom_button"
         android:shadowColor="#673AB7"
@@ -54,10 +55,11 @@
 
     <Button
         android:id="@+id/BTN_registro"
-        android:layout_width="97dp"
-        android:layout_height="40dp"
+        android:layout_width="124dp"
+        android:layout_height="39dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/custtom_button"
+        android:padding="5dp"
         android:text="Registrarse"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,8 +75,9 @@
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:ems="10"
         android:hint="Password"
+        android:padding="3dp"
         android:inputType="textPassword"
-        android:textColor="#673AB7"
+        android:textColor="#F8F6F8"
         android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
