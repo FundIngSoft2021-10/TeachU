@@ -11,50 +11,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="100dp"
         android:text="Recuperacion de contraseña"
         android:textColor="#673AB7"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/EDRE_nusuario"
-        android:layout_width="222dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/custom_imput"
-        android:ems="10"
-        android:hint="Nombre de usuario"
-        android:padding="4dp"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textColorHint="#673AB7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/EDRE_ncontrasena"
-        android:layout_width="222dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/custom_imput"
-        android:ems="10"
-        android:hint="Nueva contraseña"
-        android:padding="4dp"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textColorHint="#673AB7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EDRE_nusuario" />
 
     <Button
         android:id="@+id/btn_gc"
@@ -65,8 +29,63 @@
         android:text="Guardar cambios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EDRE_ncontrasena"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.032" />
+
+    <EditText
+        android:id="@+id/EDRE_ncontrasena"
+        android:layout_width="222dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_imput"
+        android:ems="10"
+        android:hint="Nueva contraseña"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EDRE_nusuario" />
+
+    <EditText
+        android:id="@+id/ed_correo_rec"
+        android:layout_width="222dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_imput"
+        android:ems="10"
+        android:hint="Correo"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/EDRE_nusuario"
+        android:layout_width="222dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_imput"
+        android:ems="10"
+        android:hint="Nombre de usuario"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textColorHint="#673AB7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_correo_rec" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
