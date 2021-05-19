@@ -99,26 +99,38 @@ public class Perfil extends Fragment {
         BtEdit_Nombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nOmbre.setEnabled(true);
+                if(nOmbre.isEnabled())
+                    nOmbre.setEnabled(false);
+                else
+                    nOmbre.setEnabled(true);
             }
         });
 
         BtEdit_Apellido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                aPellido.setEnabled(true);
+                if(aPellido.isEnabled())
+                    aPellido.setEnabled(false);
+                else
+                    aPellido.setEnabled(true);
             }
         });
         BtEdit_Correo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cOrreo.setEnabled(true);
+                if(cOrreo.isEnabled())
+                    cOrreo.setEnabled(false);
+                else
+                    cOrreo.setEnabled(true);
             }
         });
         BtEdit_Usuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nUsuario.setEnabled(true);
+                if(nUsuario.isEnabled())
+                    nUsuario.setEnabled(false);
+                else
+                    nUsuario.setEnabled(true);
             }
         });
         BtEdit_Buscador.setOnClickListener(new View.OnClickListener() {

@@ -59,16 +59,18 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="370dp"
         android:background="@drawable/custtom_button"
-        android:text="Guardar Clase" />
+        android:text="Guardar Clase"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button_cerrarSesion_Agregar"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:background="@drawable/custtom_button"
         android:layout_marginTop="500dp"
-        android:text="Cerrar Sesion" />
+        android:background="@drawable/custtom_button"
+        android:text="Cerrar Sesion"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button_SelecCar_Agregar"
@@ -77,16 +79,18 @@
         android:layout_marginLeft="310dp"
         android:layout_marginTop="160dp"
         android:background="@drawable/custtom_button"
-        android:text="selec" />
+        android:text="selec"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button_SeleClas_Agregar"
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginLeft="310dp"
-        android:background="@drawable/custtom_button"
         android:layout_marginTop="290dp"
-        android:text="Selec" />
+        android:background="@drawable/custtom_button"
+        android:text="Selec"
+        android:textColor="#FFFFFF" />
 
 
 </FrameLayout>

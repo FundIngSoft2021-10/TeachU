@@ -27,6 +27,7 @@
         android:background="@drawable/custom_imput"
         android:enabled="false"
         android:padding="5dp"
+        android:shadowColor="#673AB7"
         android:textColor="#FDFCFC"
         android:textColorHint="#673AB7"
         android:textSize="20dp"
@@ -128,5 +129,50 @@
         android:background="@drawable/custtom_button"
         android:text="Guardar Cambios"
         android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textnombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="170dp"
+        android:background="#000000"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Nombre"
+        android:textColor="#673AB7" />
+    <TextView
+        android:id="@+id/textApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="250dp"
+        android:background="#000000"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Apellido"
+        android:textColor="#673AB7" />
+    <TextView
+        android:id="@+id/textCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="320dp"
+        android:background="#000000"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Correo"
+        android:textColor="#673AB7" />
+    <TextView
+        android:id="@+id/textUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="390dp"
+        android:background="#000000"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Usuario"
+        android:textColor="#673AB7"/>
 
 </FrameLayout>

@@ -67,7 +67,8 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="540dp"
         android:background="@drawable/custtom_button"
-        android:text="Insertar disponibilidad" />
+        android:text="Insertar disponibilidad"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/texthora"
