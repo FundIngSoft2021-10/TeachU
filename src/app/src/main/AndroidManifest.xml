@@ -12,20 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="activities.recuperacion_de_contrasena"></activity>
-        <activity android:name="activities.HomeTutor"
+        <activity android:name="activities.recuperacion_de_contrasena"
             android:screenOrientation="portrait"/>
-        <activity android:name="activities.Home"
-            android:screenOrientation="portrait"/>
-        <activity android:name="activities.Registro_Tutor"
-            android:screenOrientation="portrait"/>
-        <activity android:name="activities.Registro_Estudiante"
-            android:screenOrientation="portrait"/>
-        <activity android:name="activities.Login"
-            android:screenOrientation="portrait"/>
-        <activity android:name="activities.Registro"
-            android:screenOrientation="portrait"/>
-        <activity android:name="activities.MainActivity"
+        <activity
+            android:name="activities.HomeTutor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.Registro_Tutor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.Registro_Estudiante"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.Registro"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
