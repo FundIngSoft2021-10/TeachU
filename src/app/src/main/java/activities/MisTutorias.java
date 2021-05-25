@@ -1,5 +1,6 @@
 package activities;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -52,7 +54,8 @@ public class MisTutorias extends Fragment {
     ArrayList<String> TextoMisClases = new ArrayList<>();
     Spinner ListaDia;
     Spinner ListaHora;
-    ListView listaMiDisponibilidad, lxMxCalses;
+    Dialog mDialog, mDialogMT;
+    ListView listaMiDisponibilidad, lxMxCalses, tutoriaClase;
     ArrayList<String> DxTxId = new ArrayList<String>();
     ArrayList<String> DxTxdia = new ArrayList<String>();
     ArrayList<String> DxTxhora = new ArrayList<String>();
@@ -134,6 +137,11 @@ public class MisTutorias extends Fragment {
         ListaHora = view.findViewById(R.id.spinnerHora);
         listaMiDisponibilidad = view.findViewById(R.id.Lista_Mi_Disponibilidad);
         lxMxCalses = view.findViewById(R.id.Lista_Mis_ClasesView);
+        tutoriaClase = view.findViewById(R.id.listaTutoriaPorClase);
+        mDialog = new Dialog(this.getContext());
+        //mDialogMT = new Dialog(this.getContext());
+        //mDialogMT.setContentView(R.layout.detalles_tutoria_popup);
+        mDialog.setContentView(R.layout.mitutoriaxclase_popup);
         CargaLista(diaNcompleto, ListaDia);
         CargaLista(hora, ListaHora);
         obtDatos();
@@ -146,7 +154,8 @@ public class MisTutorias extends Fragment {
         for(int i = 0; i < DxTxId.size(); i++){
             if(DxTxId.get(i).equalsIgnoreCase(getIdTutor())){
                 String palabra = diaContrario.get(DxTxdia.get(i));
-                palabra = palabra + " " + DxTxhora.get(i);
+                int mas = Integer.parseInt(DxTxhora.get(i)) + 1;
+                palabra = palabra + " " + DxTxhora.get(i) + " - " + mas;
                 TextoLisView.add(palabra);
             }
         }
@@ -174,10 +183,17 @@ public class MisTutorias extends Fragment {
             }
         });
 
+        lxMxCalses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   mDialog.show();
+            }
+        });
     }
 
+    public void llenarmDialod(String nombreC){
 
-
+    }
     public void SacarIdDispo(){
         for(int i = 0; i < diaTable.size(); i++){
             if(diaTable.get(i).equalsIgnoreCase(dia.get(ListaDia.getSelectedItem().toString())) &&
@@ -260,13 +276,9 @@ public class MisTutorias extends Fragment {
 
     public void obtDatosCxTxClass() {
         AsyncHttpClient cliente = new AsyncHttpClient();
-
-
         String url = "https://webserviceteachu.000webhostapp.com/index.php/TutorXClaseMiClase.php";
-
         RequestParams parametros = new RequestParams();
         parametros.put("clase", 18);
-
         cliente.post(url, parametros, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

@@ -77,7 +77,8 @@
         android:layout_marginLeft="323dp"
         android:layout_marginTop="475dp"
         android:text="Hora"
-        android:textColor="#673AB7" />
+        android:textColor="#FFFFFF" />
+
     <TextView
         android:id="@+id/textdia"
         android:layout_width="65dp"
@@ -85,6 +86,6 @@
         android:layout_marginLeft="184dp"
         android:layout_marginTop="475dp"
         android:text="Día"
-        android:textColor="#673AB7" />
+        android:textColor="#FFFFFF" />
 
 </FrameLayout>

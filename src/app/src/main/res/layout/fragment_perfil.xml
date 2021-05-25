@@ -140,7 +140,8 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="Nombre"
-        android:textColor="#673AB7" />
+        android:textColor="#F3F3F4" />
+
     <TextView
         android:id="@+id/textApellido"
         android:layout_width="wrap_content"
@@ -151,7 +152,8 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="Apellido"
-        android:textColor="#673AB7" />
+        android:textColor="#FDFCFD" />
+
     <TextView
         android:id="@+id/textCorreo"
         android:layout_width="wrap_content"
@@ -162,7 +164,8 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="Correo"
-        android:textColor="#673AB7" />
+        android:textColor="#F7F6FA" />
+
     <TextView
         android:id="@+id/textUsuario"
         android:layout_width="wrap_content"
@@ -173,6 +176,6 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="Usuario"
-        android:textColor="#673AB7"/>
+        android:textColor="#F9F7FB" />
 
 </FrameLayout>
