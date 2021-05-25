@@ -67,7 +67,6 @@ public class Perfil_Tutor extends AppCompatActivity {
                         ran = rank.get(j);
                     }
                 }
-
                 descripcion.setText(des);
             }
         });
