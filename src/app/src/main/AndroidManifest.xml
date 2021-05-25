@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="activities.recuperacion_de_contrasena"
-            android:screenOrientation="portrait"/>
+        <activity android:name="activities.Perfil_Tutor"></activity>
+        <activity
+            android:name="activities.recuperacion_de_contrasena"
+            android:screenOrientation="portrait" />
         <activity
             android:name="activities.HomeTutor"
             android:screenOrientation="portrait" />

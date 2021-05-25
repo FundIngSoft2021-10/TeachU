@@ -100,7 +100,7 @@ public class Buscar extends Fragment {
         salida.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                Toast.makeText(getContext(), resultado.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
