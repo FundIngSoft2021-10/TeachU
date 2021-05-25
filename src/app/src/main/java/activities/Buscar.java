@@ -40,6 +40,8 @@ public class Buscar extends Fragment {
     List<String> tutores = new ArrayList<>();
     List<String> clases = new ArrayList<>();
     List<String> resultado =new ArrayList<>();
+    List<String> Rt = new ArrayList<>();
+    List<String> Ra = new ArrayList<>();
     public Buscar() {
         // Required empty public constructor
     }
@@ -62,6 +64,8 @@ public class Buscar extends Fragment {
         tutores.clear();
         clases.clear();
         resultado.clear();
+        Rt.clear();
+        Ra.clear();
         obtDatos();
         busqueda = view.findViewById(R.id.Texto_De_Busqueda);
         spiner_Filtro = view.findViewById(R.id.Filtro_Busqueda);
@@ -76,12 +80,16 @@ public class Buscar extends Fragment {
             @Override
             public void onClick(View v) {
                 resultado.clear();
+                Rt.clear();
+                Ra.clear();
                 salida.setAdapter(null);
                 if(spiner_Filtro.getSelectedItem().toString().equals("Clases")) {
                     String nclase = busqueda.getText().toString().toUpperCase();
                     for (int i = 0; i < clases.size(); i++) {
                         if (clases.get(i).contains(nclase)) {
                             resultado.add("Tutor: " + tutores.get(i) + " " + "Asignarura: " + clases.get(i));
+                            Rt.add(tutores.get(i));
+                            Ra.add(clases.get(i));
                         }
                     }
                 }
@@ -90,6 +98,8 @@ public class Buscar extends Fragment {
                     for (int i = 0; i < tutores.size(); i++) {
                         if (tutores.get(i).contains(ntutor)) {
                             resultado.add("Tutor: " + tutores.get(i) + " " + "Asignarura: " + clases.get(i));
+                            Rt.add(tutores.get(i));
+                            Ra.add(clases.get(i));
                         }
                     }
                 }
@@ -100,7 +110,11 @@ public class Buscar extends Fragment {
         salida.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), resultado.get(position), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), Rt.get(position) + Ra.get(position), Toast.LENGTH_SHORT).show();
+                Intent perfil = new Intent(getContext(),Perfil_Tutor.class);
+                perfil.putExtra("Nombre",Rt.get(position));
+                perfil.putExtra("Asignatura",Ra.get(position));
+                startActivity(perfil);
             }
         });
 
