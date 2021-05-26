@@ -233,12 +233,14 @@ public class MisTutorias extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 for(int i = 0; i < tutoriaxNomxC.size(); i++){
                     for(int j = 0; j < listaTextxTutoClase.size(); j++){
-                        if(listaTextxTutoClase.get(j).contains(tutoriaxNomxC.get(i))){
-                            cliente.setText(tutoriaxNomxC.get(i));
-                            precio.setText(tutoriaxPrexC.get(i));
-                            fecha.setText(tutoriaxFechxC.get(i));
-                            nclase.setText(tutoriaxNoClasexC.get(i));
-                            break;
+                        for(int k = 0; k< TextoMisClases.size(); k++) {
+                            if(listaTextxTutoClase.get(j).contains(tutoriaxNomxC.get(i)) && listaTextxTutoClase.get(j).contains(tutoriaxFechxC.get(i)) && TextoMisClases.get(k).contains(tutoriaxNoClasexC.get(i))){
+                                cliente.setText(tutoriaxNomxC.get(i));
+                                precio.setText(tutoriaxPrexC.get(i));
+                                fecha.setText(tutoriaxFechxC.get(i));
+                                nclase.setText(tutoriaxNoClasexC.get(i));
+                                break;
+                            }
                         }
                     }
                 }
