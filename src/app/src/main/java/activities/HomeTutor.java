@@ -27,7 +27,6 @@ public class HomeTutor extends AppCompatActivity {
         miTuto.setUsuario(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar_Tutor);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        loadFragment(miTuto);
         loadFragment(agTutoria);
         loadFragment(perfil);
         loadFragment(miTuto);

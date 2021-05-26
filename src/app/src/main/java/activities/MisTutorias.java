@@ -74,8 +74,18 @@ public class MisTutorias extends Fragment {
     ArrayList<String> tutoriaxPrexC = new ArrayList<String>();
     ArrayList<String> tutoriaxFechxC = new ArrayList<String>();
     ArrayList<String> tutoriaxNoClasexC = new ArrayList<String>();
+    ArrayList<String> tutoriaxidTuToriaxC = new ArrayList<String>();
     ArrayList<String> listaTextxTutoClase = new ArrayList<String>();
-    private String usuario, idTutor, idDis;
+    Button reserva_hecha;
+    private String usuario, idTutor, idDis, idTutoria;
+
+    public String getIdTutoria() {
+        return idTutoria;
+    }
+
+    public void setIdTutoria(String idTutoria) {
+        this.idTutoria = idTutoria;
+    }
 
     public String getIdDis() {
         return idDis;
@@ -156,6 +166,7 @@ public class MisTutorias extends Fragment {
         View rows = getLayoutInflater().inflate(R.layout.detalles_tutoria_popup, null);
         tutoriaClase = (ListView) row.findViewById(R.id.listaTutoriaPorClase);
         cliente = (TextView) rows.findViewById(R.id.textCliente_DT);
+        reserva_hecha = (Button) rows.findViewById(R.id.button_Clase_Realizada);
         precio = (TextView) rows.findViewById(R.id.textPrecio_DT);
         fecha = (TextView) rows.findViewById(R.id.textFecha_DT);
         nclase = (TextView) rows.findViewById(R.id.textClase_DT);
@@ -207,6 +218,7 @@ public class MisTutorias extends Fragment {
         lxMxCalses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listaTextxTutoClase.clear();
                 for(int i = 0; i < tutoriaxNomxC.size(); i++){
                     if(TextoMisClases.get(position).equalsIgnoreCase(tutoriaxNoClasexC.get(i))){
                         String texto = " Nombre: " + tutoriaxNomxC.get(i) + " Fecha: " + tutoriaxFechxC.get(i);
@@ -217,6 +229,9 @@ public class MisTutorias extends Fragment {
                     ArrayAdapter<String> adapterTutorias = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listaTextxTutoClase);
                     tutoriaClase.setAdapter(adapterTutorias);
                     adapterTutorias.notifyDataSetChanged();
+                    if(row.getParent() != null){
+                        ((ViewGroup)row.getParent()).removeView(row);
+                    }
                     alertDialogo.setView(row);
                     mDialog = alertDialogo.create();
                     mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -233,27 +248,36 @@ public class MisTutorias extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 for(int i = 0; i < tutoriaxNomxC.size(); i++){
                     for(int j = 0; j < listaTextxTutoClase.size(); j++){
-                        if(listaTextxTutoClase.get(j).contains(tutoriaxNomxC.get(i))){
-                            cliente.setText(tutoriaxNomxC.get(i));
-                            precio.setText(tutoriaxPrexC.get(i));
-                            fecha.setText(tutoriaxFechxC.get(i));
-                            nclase.setText(tutoriaxNoClasexC.get(i));
-                            break;
+                        for(int k = 0; k< TextoMisClases.size(); k++) {
+                            if(listaTextxTutoClase.get(j).contains(tutoriaxNomxC.get(i)) && listaTextxTutoClase.get(j).contains(tutoriaxFechxC.get(i)) && TextoMisClases.get(k).contains(tutoriaxNoClasexC.get(i))){
+                                cliente.setText(tutoriaxNomxC.get(i));
+                                precio.setText(tutoriaxPrexC.get(i));
+                                fecha.setText(tutoriaxFechxC.get(i));
+                                nclase.setText(tutoriaxNoClasexC.get(i));
+                                setIdTutoria(listaTextxTutoClase.get(i));
+                                break;
+                            }
                         }
                     }
                 }
                 mDialog.dismiss();
+                if(rows.getParent() != null){
+                    ((ViewGroup)rows.getParent()).removeView(rows);
+                }
                 alertDialogo1.setView(rows);
                 mDialogMT = alertDialogo1.create();
                 mDialogMT.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 mDialogMT.show();
             }
         });
+        reserva_hecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminarTutoria("https://webserviceteachu.000webhostapp.com/index.php/eliminarTutoria.php");
+            }
+        });
     }
 
-    public void llenarmDialod(String nombreC){
-
-    }
     public void SacarIdDispo(){
         for(int i = 0; i < diaTable.size(); i++){
             if(diaTable.get(i).equalsIgnoreCase(dia.get(ListaDia.getSelectedItem().toString())) &&
@@ -376,6 +400,7 @@ public class MisTutorias extends Fragment {
                 tutoriaxPrexC = obtDatosJason(new String(responseBody), "Precio");
                 tutoriaxFechxC = obtDatosJason(new String(responseBody), "Fecha");
                 tutoriaxNoClasexC = obtDatosJason(new String(responseBody), "Nclase");
+                tutoriaxidTuToriaxC = obtDatosJason(new String(responseBody), "IdTutoria");
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
@@ -408,6 +433,29 @@ public class MisTutorias extends Fragment {
                 Map<String,String> parametros = new HashMap<String,String>();
                 parametros.put("id_usuario",getIdTutor());
                 parametros.put("disponibilidad",getIdDis());
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+        requestQueue.add(stringRequest);
+    }
+
+    private void eliminarTutoria(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext().getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext().getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("IdTutoria",getIdTutoria());
                 return parametros;
             }
         };

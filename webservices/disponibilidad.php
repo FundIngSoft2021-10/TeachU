@@ -6,9 +6,9 @@ if (!$con) {
   die("Connection failed: " . mysqli_connect_error());
 }
 	
-$query = $con->prepare("select * from Clases");
+$query = $con->prepare("select * from Disponibilidad");
 
-$sql = "select * from Clases";
+$sql = "select * from Disponibilidad";
 $result = mysqli_query($con, $sql);
 $rows = array();
 	

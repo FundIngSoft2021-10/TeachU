@@ -146,6 +146,102 @@ public function existeUsuarioNusuario($Nusuario){
 		$query->close();
 		return $usuario; 
 	}
+
+public function insertarDisxTutor($disponibilidad, $tutor){
+		$query = $this->con->prepare("INSERT INTO DisponibilidadxTutor(Tutor_Id_Usuario,IdDisponibilidad) VALUES (?, ?)");
+		$query->bind_param("ii", $disponibilidad, $tutor);
+		$resultado = $query->execute();
+		$query->close();
+		
+		if($resultado){
+			$stmt = $this->con->prepare("SELECT * FROM DisponibilidadxTutor WHERE Tutor_Id_Usuario = ?");
+            $stmt->bind_param("i", $tutor);
+			$stmt->execute();
+			$usuario = $stmt->get_result()->fetch_assoc();
+			$stmt->close();
+			
+			return $usuario;
+		}
+		else{
+			return false;
+		}
+	
+	
 }
+
+	public function updateUsuario($nombre, $apellido, $correo, $Nusuario, $id ){
+        $query = $this->con->prepare("UPDATE Usuario SET Nombre = ?, Apellido = ?, CorreoInst = ?, Nusuario = ? WHERE Id_Usuario = ?");
+        $query->bind_param("ssssi", $nombre, $apellido, $correo, $Nusuario, $id);
+        $resultado = $query->execute();
+        $query->close();
+
+        if($resultado){
+            $stmt = $this->con->prepare("SELECT * FROM Usuario WHERE CorreoInst = ?");
+            $stmt->bind_param("s", $correo);
+            $stmt->execute();
+            $usuario = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+
+            return $usuario;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+	public function updateUxC($Nusuario, $contra ){
+        $query = $this->con->prepare("UPDATE Usuario SET contrasena = ? WHERE Nusuario = ?");
+        $query->bind_param("ss", $Nusuario, $contra);
+        $resultado = $query->execute();
+        $query->close();
+
+        if($resultado){
+            $stmt = $this->con->prepare("SELECT * FROM Usuario WHERE Nusuario = ?");
+            $stmt->bind_param("s", $Nusuario);
+            $stmt->execute();
+            $usuario = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+
+            return $usuario;
+        }
+        else{
+            return false;
+        }
+
+    }
+	
+	public function insertarTutoria($IdEstudiante, $IdTutor, $IdTutoria, $Fecha, $Duracion, $idClase, $Precio){
+		$query = $this->con->prepare("INSERT INTO Tutoria (IdEstudiante, IdTutor, IdTutoria ,Fecha, Duracion, idClase, Precio) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		$query->bind_param("iiisiid", $IdEstudiante, $IdTutor, $IdTutoria,$Fecha,$Duracion, $idClase, $Precio);
+		$resultado = $query->execute();
+		$query->close();
+		
+		if($resultado){
+			$stmt = $this->con->prepare("SELECT * FROM Tutoria WHERE IdTutoria = ?");
+            $stmt->bind_param("i", $IdTutoria);
+			$stmt->execute();
+			$Tutoria = $stmt->get_result()->fetch_assoc();
+			$stmt->close();
+			
+			return $Tutoria;
+		}
+		else{
+			return false;
+		}
+	}
+
+
+	public function eliminarTutoria($id){
+		$query = $this->con->prepare("DELETE FROM Tutoria WHERE IdTutoria = ?");
+		$query->bind_param("i", $id);
+		$query->execute();
+		$query->close();
+		
+	}
+}
+
+
+
 
 ?>
