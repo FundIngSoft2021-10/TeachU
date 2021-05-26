@@ -24,6 +24,6 @@
         android:layout_height="320dp"
         android:background="@drawable/spinner_custom"
        android:layout_marginTop="50dp"
-        android:layout_marginLeft="30dp"></ListView>
+        android:layout_gravity="center_horizontal"></ListView>
 
 </FrameLayout>

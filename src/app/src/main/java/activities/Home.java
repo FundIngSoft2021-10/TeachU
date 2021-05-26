@@ -26,7 +26,6 @@ public class Home extends AppCompatActivity {
         perfil.SetUsuario(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         loadFragment(perfil);
         loadFragment(buscar);
     }

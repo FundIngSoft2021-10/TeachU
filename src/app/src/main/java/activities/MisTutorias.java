@@ -207,6 +207,7 @@ public class MisTutorias extends Fragment {
         lxMxCalses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listaTextxTutoClase.clear();
                 for(int i = 0; i < tutoriaxNomxC.size(); i++){
                     if(TextoMisClases.get(position).equalsIgnoreCase(tutoriaxNoClasexC.get(i))){
                         String texto = " Nombre: " + tutoriaxNomxC.get(i) + " Fecha: " + tutoriaxFechxC.get(i);
@@ -217,6 +218,9 @@ public class MisTutorias extends Fragment {
                     ArrayAdapter<String> adapterTutorias = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listaTextxTutoClase);
                     tutoriaClase.setAdapter(adapterTutorias);
                     adapterTutorias.notifyDataSetChanged();
+                    if(row.getParent() != null){
+                        ((ViewGroup)row.getParent()).removeView(row);
+                    }
                     alertDialogo.setView(row);
                     mDialog = alertDialogo.create();
                     mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -245,6 +249,9 @@ public class MisTutorias extends Fragment {
                     }
                 }
                 mDialog.dismiss();
+                if(rows.getParent() != null){
+                    ((ViewGroup)rows.getParent()).removeView(rows);
+                }
                 alertDialogo1.setView(rows);
                 mDialogMT = alertDialogo1.create();
                 mDialogMT.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
