@@ -254,7 +254,7 @@ public class MisTutorias extends Fragment {
                                 precio.setText(tutoriaxPrexC.get(i));
                                 fecha.setText(tutoriaxFechxC.get(i));
                                 nclase.setText(tutoriaxNoClasexC.get(i));
-                                setIdTutoria(listaTextxTutoClase.get(i));
+                                setIdTutoria(tutoriaxidTuToriaxC.get(i));
                                 break;
                             }
                         }
