@@ -32,6 +32,7 @@ public class Perfil_Tutor extends AppCompatActivity {
     List<String> descript = new ArrayList<>();
     List<String> rank = new ArrayList<>();
     String id = "",des = "",ran = "";
+    String as = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +71,14 @@ public class Perfil_Tutor extends AppCompatActivity {
                 descripcion.setText(des);
             }
         });
-
+        btn_reserva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reserva = new Intent(Perfil_Tutor.this,reserva.class);
+                reserva.putExtra("clase",as);
+                startActivity(reserva);
+            }
+        });
 
 
     }
