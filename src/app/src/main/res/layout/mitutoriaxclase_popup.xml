@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
     android:layout_height="400dp"
     android:layout_gravity="center"
-    android:background="#000000">
+    android:background="@drawable/custom_imput">
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/custom_imput"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:foregroundGravity="center"
         android:gravity="center_horizontal"
         android:text="Tutoria"
         android:textColor="#ffffff"
         android:textSize="30dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
+
     <ListView
         android:id="@+id/listaTutoriaPorClase"
         android:layout_width="272dp"
-        android:layout_height="302dp"
+        android:layout_height="320dp"
         android:background="@drawable/spinner_custom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ListView>
+       android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"></ListView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

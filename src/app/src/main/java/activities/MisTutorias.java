@@ -1,6 +1,9 @@
 package activities;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,10 +39,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
+import entities.Tutor;
+import entities.Tutoria;
 
 public class MisTutorias extends Fragment {
     HashMap<String, String> dia = new HashMap();
@@ -54,14 +62,19 @@ public class MisTutorias extends Fragment {
     ArrayList<String> TextoMisClases = new ArrayList<>();
     Spinner ListaDia;
     Spinner ListaHora;
-    Dialog mDialog, mDialogMT;
+    AlertDialog mDialog, mDialogMT;
+    TextView cliente, precio, fecha, nclase;
     ListView listaMiDisponibilidad, lxMxCalses, tutoriaClase;
     ArrayList<String> DxTxId = new ArrayList<String>();
     ArrayList<String> DxTxdia = new ArrayList<String>();
     ArrayList<String> DxTxhora = new ArrayList<String>();
     ArrayList<String> CxTxid = new ArrayList<String>();
     ArrayList<String> CxTxNoClass = new ArrayList<String>();
-
+    ArrayList<String> tutoriaxNomxC = new ArrayList<String>();
+    ArrayList<String> tutoriaxPrexC = new ArrayList<String>();
+    ArrayList<String> tutoriaxFechxC = new ArrayList<String>();
+    ArrayList<String> tutoriaxNoClasexC = new ArrayList<String>();
+    ArrayList<String> listaTextxTutoClase = new ArrayList<String>();
     private String usuario, idTutor, idDis;
 
     public String getIdDis() {
@@ -137,11 +150,15 @@ public class MisTutorias extends Fragment {
         ListaHora = view.findViewById(R.id.spinnerHora);
         listaMiDisponibilidad = view.findViewById(R.id.Lista_Mi_Disponibilidad);
         lxMxCalses = view.findViewById(R.id.Lista_Mis_ClasesView);
-        tutoriaClase = view.findViewById(R.id.listaTutoriaPorClase);
-        mDialog = new Dialog(this.getContext());
-        //mDialogMT = new Dialog(this.getContext());
-        //mDialogMT.setContentView(R.layout.detalles_tutoria_popup);
-        mDialog.setContentView(R.layout.mitutoriaxclase_popup);
+        AlertDialog.Builder alertDialogo = new AlertDialog.Builder(this.getContext());
+        AlertDialog.Builder alertDialogo1 = new AlertDialog.Builder(this.getContext());
+        View row = getLayoutInflater().inflate(R.layout.mitutoriaxclase_popup, null);
+        View rows = getLayoutInflater().inflate(R.layout.detalles_tutoria_popup, null);
+        tutoriaClase = (ListView) row.findViewById(R.id.listaTutoriaPorClase);
+        cliente = (TextView) rows.findViewById(R.id.textCliente_DT);
+        precio = (TextView) rows.findViewById(R.id.textPrecio_DT);
+        fecha = (TextView) rows.findViewById(R.id.textFecha_DT);
+        nclase = (TextView) rows.findViewById(R.id.textClase_DT);
         CargaLista(diaNcompleto, ListaDia);
         CargaLista(hora, ListaHora);
         obtDatos();
@@ -150,6 +167,8 @@ public class MisTutorias extends Fragment {
         obtDatosCxTxClass();
         BuscarId(getUsuario());
         TextoLisView.clear();
+        listaTextxTutoClase.clear();
+        obtDatostutoriaxNomxC();
 
         for(int i = 0; i < DxTxId.size(); i++){
             if(DxTxId.get(i).equalsIgnoreCase(getIdTutor())){
@@ -167,6 +186,8 @@ public class MisTutorias extends Fragment {
                 TextoMisClases.add(CxTxNoClass.get(i));
             }
         }
+
+
 
         ArrayAdapter<String> adapterMiClases = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, TextoMisClases);
         lxMxCalses.setAdapter(adapterMiClases);
@@ -186,7 +207,46 @@ public class MisTutorias extends Fragment {
         lxMxCalses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   mDialog.show();
+                for(int i = 0; i < tutoriaxNomxC.size(); i++){
+                    if(TextoMisClases.get(position).equalsIgnoreCase(tutoriaxNoClasexC.get(i))){
+                        String texto = " Nombre: " + tutoriaxNomxC.get(i) + " Fecha: " + tutoriaxFechxC.get(i);
+                        listaTextxTutoClase.add(texto);
+                    }
+                }
+                if(!listaTextxTutoClase.isEmpty()){
+                    ArrayAdapter<String> adapterTutorias = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listaTextxTutoClase);
+                    tutoriaClase.setAdapter(adapterTutorias);
+                    adapterTutorias.notifyDataSetChanged();
+                    alertDialogo.setView(row);
+                    mDialog = alertDialogo.create();
+                    mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    mDialog.show();
+                }
+                else{
+                    Toast.makeText(getContext().getApplicationContext(), "NO TIENE TUTORIAS PARA ESTA CLASE", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        tutoriaClase.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for(int i = 0; i < tutoriaxNomxC.size(); i++){
+                    for(int j = 0; j < listaTextxTutoClase.size(); j++){
+                        if(listaTextxTutoClase.get(j).contains(tutoriaxNomxC.get(i))){
+                            cliente.setText(tutoriaxNomxC.get(i));
+                            precio.setText(tutoriaxPrexC.get(i));
+                            fecha.setText(tutoriaxFechxC.get(i));
+                            nclase.setText(tutoriaxNoClasexC.get(i));
+                            break;
+                        }
+                    }
+                }
+                mDialog.dismiss();
+                alertDialogo1.setView(rows);
+                mDialogMT = alertDialogo1.create();
+                mDialogMT.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                mDialogMT.show();
             }
         });
     }
@@ -203,7 +263,6 @@ public class MisTutorias extends Fragment {
         }
 
     }
-
     public void CargaLista(ArrayList<String> datos, Spinner listado) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, datos);
         listado.setAdapter(adapter);
@@ -305,7 +364,25 @@ public class MisTutorias extends Fragment {
         }
         return listado;
     }
+    public void obtDatostutoriaxNomxC() {
+        AsyncHttpClient cliente = new AsyncHttpClient();
+        String url = "https://webserviceteachu.000webhostapp.com/index.php/TutoriasXUsuarios.php";
+        RequestParams parametros = new RequestParams();
+        parametros.put("clase", 18);
+        cliente.post(url, parametros, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                tutoriaxNomxC = obtDatosJason(new String(responseBody), "NomEstudiante");
+                tutoriaxPrexC = obtDatosJason(new String(responseBody), "Precio");
+                tutoriaxFechxC = obtDatosJason(new String(responseBody), "Fecha");
+                tutoriaxNoClasexC = obtDatosJason(new String(responseBody), "Nclase");
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
+            }
+        });
+    }
     public void BuscarId (String Usuario){
         for (int i = 0; i < usuarios.size(); i++){
             if(usuarios.get(i).equalsIgnoreCase(Usuario)){

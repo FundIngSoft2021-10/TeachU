@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="320dp"
     android:layout_height="400dp"
     android:layout_gravity="center"
-    android:background="#000000"><![CDATA[>
-
-
-
-    ]]>
+    android:background="@drawable/custom_imput">
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_imput"
         android:fontFamily="sans-serif-black"
         android:foregroundGravity="center"
         android:gravity="center_horizontal"
         android:text="DETALLES TUTORIA"
-        android:textColor="#673AB7"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-16dp" />
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -32,70 +23,45 @@
         android:fontFamily="sans-serif-black"
         android:text="Cliente: "
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.219"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="30dp" />
 
     <TextView
         android:id="@+id/textCliente_DT"
-        android:layout_width="162dp"
+        android:layout_width="231dp"
         android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="70dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.219"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#673AB7" />
 
 
     <TextView
         android:id="@+id/textPrecio_DT"
-        android:layout_width="162dp"
+        android:layout_width="231dp"
         android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="110dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.336"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#673AB7" />
 
     <TextView
         android:id="@+id/textFecha_DT"
-        android:layout_width="162dp"
+        android:layout_width="234dp"
         android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="150dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.466"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#673AB7" />
 
     <TextView
         android:id="@+id/textClase_DT"
-        android:layout_width="162dp"
+        android:layout_width="234dp"
         android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="190dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.571"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#673AB7" />
 
     <TextView
         android:id="@+id/textView5"
@@ -104,13 +70,8 @@
         android:fontFamily="sans-serif-black"
         android:text="Precio: "
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="30dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -118,14 +79,9 @@
         android:layout_height="31dp"
         android:fontFamily="sans-serif-black"
         android:text="Fecha: "
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/textView6"
@@ -133,14 +89,9 @@
         android:layout_height="31dp"
         android:fontFamily="sans-serif-black"
         android:text="Clase: "
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="190dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/button"
@@ -149,9 +100,6 @@
         android:background="@drawable/custtom_button"
         android:text="Clase Realizada"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center_horizontal" />
+</FrameLayout>
