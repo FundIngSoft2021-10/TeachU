@@ -31,7 +31,7 @@ public class Perfil_Tutor extends AppCompatActivity {
     List<String> nombreU = new ArrayList<>();
     List<String> descript = new ArrayList<>();
     List<String> rank = new ArrayList<>();
-    String id = "",des = "",ran = "";
+    String id = "",des = "",ran = "",id_est = "";
     String as = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class Perfil_Tutor extends AppCompatActivity {
         rec = findViewById(R.id.rec);
         String nu = getIntent().getExtras().getString("Nombre");
         String as = getIntent().getExtras().getString("Asignatura");
+        String estu = getIntent().getExtras().getString("estu");
         nombre.setText(nu);
         asignatura.setText(as);
         rec.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +61,10 @@ public class Perfil_Tutor extends AppCompatActivity {
                 for(int i = 0; i<nombreU.size();i++){
                     if(nombreU.get(i).equals(nu)){
                         id = id_usuario.get(i);
+
+                    }
+                    if(nombreU.get(i).equals(estu)){
+                        id_est = id_usuario.get(i);
                     }
                 }
                 for(int j = 0; j<id_tutor.size();j++){
@@ -76,6 +81,8 @@ public class Perfil_Tutor extends AppCompatActivity {
             public void onClick(View v) {
                 Intent reserva = new Intent(Perfil_Tutor.this,reserva.class);
                 reserva.putExtra("clase",as);
+                reserva.putExtra("id_tut",id);
+                reserva.putExtra("id_est",id_est);
                 startActivity(reserva);
             }
         });

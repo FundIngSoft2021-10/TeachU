@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import entities.Usuario;
+
 public class Home extends AppCompatActivity {
     Perfil perfil = new Perfil();
     Buscar buscar = new Buscar();
@@ -24,9 +26,9 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         usuario = getIntent().getExtras().getString("Usuario");
         perfil.SetUsuario(usuario);
+        buscar.setEstu(usuario);
         BottomNavigationView navigation = findViewById(R.id.NavegationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         loadFragment(perfil);
         loadFragment(buscar);
     }

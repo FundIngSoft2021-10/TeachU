@@ -37,16 +37,96 @@ public class Buscar extends Fragment {
     EditText busqueda;
     Button buscar;
     ListView salida;
+    private String estu;
     List<String> tutores = new ArrayList<>();
     List<String> clases = new ArrayList<>();
     List<String> resultado =new ArrayList<>();
     List<String> Rt = new ArrayList<>();
     List<String> Ra = new ArrayList<>();
+    String estud;
     public Buscar() {
         // Required empty public constructor
     }
 
+    public Spinner getSpiner_Filtro() {
+        return spiner_Filtro;
+    }
 
+    public void setSpiner_Filtro(Spinner spiner_Filtro) {
+        this.spiner_Filtro = spiner_Filtro;
+    }
+
+    public EditText getBusqueda() {
+        return busqueda;
+    }
+
+    public void setBusqueda(EditText busqueda) {
+        this.busqueda = busqueda;
+    }
+
+    public Button getBuscar() {
+        return buscar;
+    }
+
+    public void setBuscar(Button buscar) {
+        this.buscar = buscar;
+    }
+
+    public ListView getSalida() {
+        return salida;
+    }
+
+    public void setSalida(ListView salida) {
+        this.salida = salida;
+    }
+
+    public String getEstu() {
+        return estu;
+    }
+
+    public void setEstu(String estu) {
+        this.estu = estu;
+    }
+
+    public List<String> getTutores() {
+        return tutores;
+    }
+
+    public void setTutores(List<String> tutores) {
+        this.tutores = tutores;
+    }
+
+    public List<String> getClases() {
+        return clases;
+    }
+
+    public void setClases(List<String> clases) {
+        this.clases = clases;
+    }
+
+    public List<String> getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(List<String> resultado) {
+        this.resultado = resultado;
+    }
+
+    public List<String> getRt() {
+        return Rt;
+    }
+
+    public void setRt(List<String> rt) {
+        Rt = rt;
+    }
+
+    public List<String> getRa() {
+        return Ra;
+    }
+
+    public void setRa(List<String> ra) {
+        Ra = ra;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +152,7 @@ public class Buscar extends Fragment {
         buscar = view.findViewById(R.id.Bt_Buscar);
         salida = view.findViewById(R.id.lista_resultados);
         String [] tipo_Busqueda = {"Tutor","Clases"};
-
+        estud = this.getEstu();
         ArrayAdapter<String> adaptador   = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, tipo_Busqueda);
         spiner_Filtro.setAdapter(adaptador);
 
@@ -90,6 +170,7 @@ public class Buscar extends Fragment {
                             resultado.add("Tutor: " + tutores.get(i) + " " + "Asignarura: " + clases.get(i));
                             Rt.add(tutores.get(i));
                             Ra.add(clases.get(i));
+
                         }
                     }
                 }
@@ -114,6 +195,7 @@ public class Buscar extends Fragment {
                 Intent perfil = new Intent(getContext(),Perfil_Tutor.class);
                 perfil.putExtra("Nombre",Rt.get(position));
                 perfil.putExtra("Asignatura",Ra.get(position));
+                perfil.putExtra("estu",estud);
                 startActivity(perfil);
             }
         });
@@ -159,4 +241,5 @@ public class Buscar extends Fragment {
         }
         return listado;
     }
+
 }
