@@ -3,7 +3,8 @@
     android:layout_width="320dp"
     android:layout_height="400dp"
     android:layout_gravity="center"
-    android:background="@drawable/custom_imput">
+    android:background="@drawable/custom_imput"
+    android:padding="7dp">
 
     <TextView
         android:id="@+id/textView7"
@@ -14,7 +15,7 @@
         android:gravity="center_horizontal"
         android:text="DETALLES TUTORIA"
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -22,6 +23,7 @@
         android:layout_height="31dp"
         android:fontFamily="sans-serif-black"
         android:text="Cliente: "
+        android:textSize="20dp"
         android:textColor="#ffffff"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="30dp" />
@@ -31,6 +33,7 @@
         android:layout_width="231dp"
         android:layout_height="31dp"
         android:layout_marginLeft="120dp"
+        android:textSize="20dp"
         android:layout_marginTop="70dp"
         android:fontFamily="sans-serif-black"
         android:textColor="#673AB7" />
@@ -41,6 +44,7 @@
         android:layout_width="231dp"
         android:layout_height="31dp"
         android:layout_marginLeft="120dp"
+        android:textSize="20dp"
         android:layout_marginTop="110dp"
         android:fontFamily="sans-serif-black"
         android:textColor="#673AB7" />
@@ -50,6 +54,7 @@
         android:layout_width="234dp"
         android:layout_height="31dp"
         android:layout_marginLeft="120dp"
+        android:textSize="20dp"
         android:layout_marginTop="150dp"
         android:fontFamily="sans-serif-black"
         android:textColor="#673AB7" />
@@ -59,6 +64,7 @@
         android:layout_width="234dp"
         android:layout_height="31dp"
         android:layout_marginLeft="120dp"
+        android:textSize="20dp"
         android:layout_marginTop="190dp"
         android:fontFamily="sans-serif-black"
         android:textColor="#673AB7" />
@@ -70,6 +76,7 @@
         android:fontFamily="sans-serif-black"
         android:text="Precio: "
         android:textColor="#ffffff"
+        android:textSize="20dp"
         android:layout_marginTop="110dp"
         android:layout_marginLeft="30dp" />
 
@@ -79,6 +86,7 @@
         android:layout_height="31dp"
         android:fontFamily="sans-serif-black"
         android:text="Fecha: "
+        android:textSize="20dp"
         android:layout_marginTop="150dp"
         android:layout_marginLeft="30dp"
         android:textColor="#ffffff" />
@@ -89,12 +97,13 @@
         android:layout_height="31dp"
         android:fontFamily="sans-serif-black"
         android:text="Clase: "
+        android:textSize="20dp"
         android:layout_marginTop="190dp"
         android:layout_marginLeft="30dp"
         android:textColor="#ffffff"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_Clase_Realizada"
         android:layout_width="237dp"
         android:layout_height="40dp"
         android:background="@drawable/custtom_button"
