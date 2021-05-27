@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="@drawable/custom_imput"
+    android:padding="7dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:text="Calificar Clase"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="75dp"
+        android:layout_height="31dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Tutor: "
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:id="@+id/text_Tutor_CT"
+        android:layout_width="231dp"
+        android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:textSize="20dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#673AB7" />
+
+    <TextView
+        android:id="@+id/text_Fecha_CT"
+        android:layout_width="234dp"
+        android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:textSize="20dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#673AB7" />
+
+    <TextView
+        android:id="@+id/text_Clase_CT"
+        android:layout_width="234dp"
+        android:layout_height="31dp"
+        android:layout_marginLeft="120dp"
+        android:textSize="20dp"
+        android:layout_marginTop="110dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#673AB7" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="75dp"
+        android:layout_height="31dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Fecha: "
+        android:textSize="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="75dp"
+        android:layout_height="31dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Clase: "
+        android:textSize="20dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ffffff"/>
+
+    <Spinner
+        android:id="@+id/spinner_calificacion"
+        android:layout_width="175dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/spinner_custom" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="75dp"
+        android:layout_height="31dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Calificación "
+        android:textSize="12dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/button_calificar"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/custtom_button"
+        android:text="Calificar"
+        android:textColor="#ffffff" />
+</FrameLayout>

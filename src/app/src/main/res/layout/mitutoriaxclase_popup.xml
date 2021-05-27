@@ -14,7 +14,7 @@
         android:fontFamily="sans-serif-black"
         android:foregroundGravity="center"
         android:gravity="center_horizontal"
-        android:text="Tutoria"
+        android:text="Tutorias"
         android:textColor="#ffffff"
         android:textSize="30dp"
         tools:ignore="MissingConstraints" />

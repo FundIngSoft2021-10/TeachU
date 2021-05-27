@@ -49,11 +49,21 @@
 
     <ListView
         android:id="@+id/lista_resultados"
-        android:layout_width="350dp"
-        android:layout_height="478dp"
+        android:layout_width="349dp"
+        android:layout_height="298dp"
         android:layout_marginLeft="27dp"
-        android:background="@drawable/spinner_custom"
-        android:layout_marginTop="230dp" />
+        android:layout_marginTop="230dp"
+        android:background="@drawable/spinner_custom" />
+
+    <Button
+        android:id="@+id/button_Tutorias_Estu"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="540dp"
+        android:background="@drawable/custtom_button"
+        android:text="Mis TUTORIAS"
+        android:textColor="#ffffff" />
 
 
 </FrameLayout>
