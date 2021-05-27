@@ -54,6 +54,8 @@ public class reserva extends AppCompatActivity {
         idestu = getIntent().getExtras().getString("id_est");
         clases.clear();
         id_clases.clear();
+        tv_tut.setText(clase);
+        tv_precio.setText(precio);
         obtDatos();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +68,7 @@ public class reserva extends AppCompatActivity {
                 DatePickerDialog dpd = new DatePickerDialog(reserva.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fecha = dayOfMonth + "/" + month + "/" + year;
+                        fecha =   year + "-" + month + "-" + dayOfMonth;
                         tv.setText(fecha);
                     }
                 },ano,mes,dia);
@@ -81,6 +83,9 @@ public class reserva extends AppCompatActivity {
                         idClase = id_clases.get(i);
                     }
                 }
+                ejecutarservicio("https://webserviceteachu.000webhostapp.com/index.php/insertarTutoria.php");
+                tv.setText(idestu+"-"+idTutor+"-"+fecha+"-"+idClase+"-"+precio );
+
             }
         });
     }
@@ -139,7 +144,7 @@ public class reserva extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String,String>();
-                String cod = "3";
+                String cod = "5";
                 parametros.put("IdEstudiante",idestu);
                 parametros.put("IdTutor",idTutor);
                 parametros.put("IdTutoria",cod);

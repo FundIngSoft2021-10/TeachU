@@ -52,7 +52,7 @@ public class Perfil_Tutor extends AppCompatActivity {
         rec = findViewById(R.id.rec);
         String nu = getIntent().getExtras().getString("Nombre");
         String as = getIntent().getExtras().getString("Asignatura");
-        String estu = getIntent().getExtras().getString("estu");
+        String estu = getIntent().getExtras().getString("estu").toUpperCase();
         nombre.setText(nu);
         asignatura.setText(as);
         rec.setOnClickListener(new View.OnClickListener() {
