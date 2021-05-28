@@ -22,6 +22,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.teachu.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -31,7 +38,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -39,7 +48,7 @@ import cz.msebera.android.httpclient.Header;
 public class Buscar extends Fragment {
     Spinner spiner_Filtro, calificar;
     EditText busqueda;
-    Button buscar, misTuto;
+    Button buscar, misTuto, ranking;
     ListView salida, tutoriaClase;
     TextView tutor, fecha, nclase;
     private String estu;
@@ -55,7 +64,8 @@ public class Buscar extends Fragment {
     ArrayList<String> tutoriaxNoClasexC = new ArrayList<String>();
     ArrayList<String> tutoriaxidTuToriaxC = new ArrayList<String>();
     ArrayList<String> listaTextxTutoClase = new ArrayList<String>();
-    String estud;
+    ArrayList<String> tutoriaxidTuTorxC = new ArrayList<String>();
+    String estud, ntuto, nranking;
     public Buscar() {
         // Required empty public constructor
     }
@@ -174,6 +184,7 @@ public class Buscar extends Fragment {
         fecha = (TextView) rows.findViewById(R.id.text_Fecha_CT);
         nclase = (TextView) rows.findViewById(R.id.text_Clase_CT);
         calificar = (Spinner) rows.findViewById(R.id.spinner_calificacion);
+        ranking = (Button) rows.findViewById(R.id.button_calificar);
         String [] tipo_Busqueda = {"Tutor","Clases"};
         estud = this.getEstu();
         ArrayAdapter<String> adaptador   = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, tipo_Busqueda);
@@ -256,8 +267,9 @@ public class Buscar extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 for(int i = 0; i < tutoriaxNomTutoxC.size(); i++){
                     for(int j = 0; j < listaTextxTutoClase.size(); j++){
-                        if(listaTextxTutoClase.get(j).contains(tutoriaxNomTutoxC.get(i)) && listaTextxTutoClase.get(j).contains(tutoriaxFechxC.get(i)) && listaTextxTutoClase.get(j).contains(tutoriaxidTuToriaxC.get(i))){
+                        if(listaTextxTutoClase.get(position).contains(tutoriaxNomTutoxC.get(i)) && listaTextxTutoClase.get(position).contains(tutoriaxFechxC.get(i)) && listaTextxTutoClase.get(position).contains(tutoriaxidTuToriaxC.get(i))){
                             tutor.setText(tutoriaxNomTutoxC.get(i));
+                            ntuto = tutoriaxNomTutoxC.get(i);
                             fecha.setText(tutoriaxFechxC.get(i));
                             nclase.setText(tutoriaxNoClasexC.get(i));
                             break;
@@ -278,7 +290,13 @@ public class Buscar extends Fragment {
                 mDialogMT.show();
             }
         });
-
+        ranking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nranking = calificar.getSelectedItem().toString();
+                rankingTutor("https://webserviceteachu.000webhostapp.com/index.php/updateRanking.php");
+            }
+        });
 
     }
     public void obtDatos() {
@@ -333,6 +351,7 @@ public class Buscar extends Fragment {
                 tutoriaxFechxC = obtDatosJason(new String(responseBody), "Fecha");
                 tutoriaxNoClasexC = obtDatosJason(new String(responseBody), "Nclase");
                 tutoriaxidTuToriaxC = obtDatosJason(new String(responseBody), "IdTutoria");
+                tutoriaxidTuTorxC = obtDatosJason(new String(responseBody), "IdTutoria");
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
@@ -353,6 +372,29 @@ public class Buscar extends Fragment {
             throw new RuntimeException(e);
         }
         return listado;
+    }
+    private void rankingTutor(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext().getApplicationContext(), "CALIFICACION REALIZADA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext().getApplicationContext(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String,String>();
+                parametros.put("nUsuario",ntuto);
+                parametros.put("Ranking",nranking);
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+        requestQueue.add(stringRequest);
     }
 
 }
